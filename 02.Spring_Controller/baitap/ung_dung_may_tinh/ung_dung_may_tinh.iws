@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ung_dung_may_tinh:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a0e3b3ec-4151-4a97-a2e6-c680e79f6c9c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/controllers/TranslateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/controllers/TranslateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/service/Translate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/service/TranslateImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/controllers/TranslateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/controllers/TranslateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/service/Translate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/service/TranslateImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/controllers/TranslateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/controllers/TranslateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/TranslateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/TranslateImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/TranslateServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/web/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/web/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/artifacts/ungdungchuyendoitien_war_exploded/WEB-INF/classes/controller/ChangeMoneyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/artifacts/ungdungchuyendoitien_war_exploded/WEB-INF/classes/controller/ChangeMoneyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/artifacts/ungdungchuyendoitien_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/production/ungdungchuyendoitien/controller/ChangeMoneyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/production/ungdungchuyendoitien/controller/ChangeMoneyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/controller/ChangeMoneyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/controller/ChangeMoneyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoney.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoneyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoneyImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoneyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/web/index.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="1kgXTdpnbQWRa1muqdgiRbaBbYB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.39" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.39" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ung_dung_may_tinh:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_ung_dung_may_tinh" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57626" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ung_dung_may_tinh:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.39" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_ung_dung_may_tinh" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57626" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0e3b3ec-4151-4a97-a2e6-c680e79f6c9c" name="Default Changelist" comment="" />
+      <created>1606123216861</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606123216861</updated>
+      <workItem from="1606123221742" duration="1087000" />
+      <workItem from="1606124792428" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1606123288942">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1606123288942" />
+    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606123263730">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1606123263730" />
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1606123648431">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1606123648431" />
+    <state width="1055" height="221" key="GridCell.Tab.0.bottom" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.0.center" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.0.left" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.0.right" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.1.bottom" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.1.center" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.1.left" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.1.right" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.2.bottom" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.2.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.2.center" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.2.center/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.2.left" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.2.left/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+    <state width="1055" height="221" key="GridCell.Tab.2.right" timestamp="1606124315647">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1055" height="221" key="GridCell.Tab.2.right/0.0.1536.834@0.0.1536.834" timestamp="1606124315647" />
+  </component>
+</project>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbce7d07-ec1a-4e1e-b1fd-4b4b046f098f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/controllers/TranslateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/controllers/TranslateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/service/Translate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/classes/service/TranslateImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/artifacts/ung_dung_tu_dien_war_exploded/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/controllers/TranslateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/controllers/TranslateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/service/Translate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/out/production/ung_dung_tu_dien/service/TranslateImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/controllers/TranslateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/controllers/TranslateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/TranslateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/TranslateImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/src/service/TranslateServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/ung_dung_tu_dien.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/web/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ung_dung_tu_dien/web/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/artifacts/ungdungchuyendoitien_war_exploded/WEB-INF/classes/controller/ChangeMoneyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/artifacts/ungdungchuyendoitien_war_exploded/WEB-INF/classes/controller/ChangeMoneyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/artifacts/ungdungchuyendoitien_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/production/ungdungchuyendoitien/controller/ChangeMoneyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/out/production/ungdungchuyendoitien/controller/ChangeMoneyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/controller/ChangeMoneyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/controller/ChangeMoneyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoney.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoneyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoneyImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/src/service/ChangeMoneyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/ungdungchuyendoitien.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../01.tong_quan_spring/baitap/ungdungchuyendoitien/web/index.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1kgSI1VheOvHdB6kdtAoEnWA7DF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbce7d07-ec1a-4e1e-b1fd-4b4b046f098f" name="Default Changelist" comment="" />
+      <created>1606120657742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606120657742</updated>
+      <workItem from="1606120658945" duration="5000" />
+    </task>
+    <servers />
+  </component>
+</project>
