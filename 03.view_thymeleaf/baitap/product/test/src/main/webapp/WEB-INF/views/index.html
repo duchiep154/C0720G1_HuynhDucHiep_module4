@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+
+<body>
+<div align="center">
+    <h3>Products list</h3>
+</div>
+
+<div class="container-fluid">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div align="center">
+                            <!-- Button -->
+                            <button type="submit" class="btn btn-warning" style="margin-top: 13px; margin-bottom: 3px">
+                                <a th:href="@{/product/create}" style="text-decoration: none; color: rgb(0,0,0)">Create New Product</a>
+                            </button>
+                            <div class="notify" style="color: red">
+                                <div th:if="${message}"><span th:text="${message}"></span></div>
+                            </div>
+                        </div>
+                        <table id="products" class="table table-striped table-hover table-bordered" style="width: 100%">
+                            <thead class="thead-dark" >
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">name</th>
+                                <th scope="col">price</th>
+                                <th scope="col">manufacturer</th>
+                                <th scope="col">category</th>
+                                <th scope="col">quantity</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="product,rowStat : ${products}">
+                                <td th:text="${product.getId()}"></td>
+                                <td th:text="${product.getName()}"></td>
+                                <td th:text="${product.getPrice()}"></td>
+                                <td th:text="${product.getManufacturer()}"></td>
+                                <td th:text="${product.getCategory()}"></td>
+                                <td th:text="${product.getQuantity()}"></td>
+                                <td>
+                                    <a th:href="@{/product/{id}/edit(id=${product.getId()})}">edit</a>
+                                    <a th:href="@{/product/{id}/delete(id=${product.getId()})}">delete</a>
+                                    <a th:href="@{/product/{id}/view(id=${product.getId()})}">view</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+
+</html>
