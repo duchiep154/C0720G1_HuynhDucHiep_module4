@@ -25,13 +25,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a37dead-b33d-4b80-a4be-fe71f4a6178b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/detail_view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02.Spring_Controller/baitap/ung_dung_quan_ly_gia_vi/ung_dung_quan_ly_gia_vi.iws" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02.Spring_Controller/baitap/ung_dung_quan_ly_gia_vi/ung_dung_quan_ly_gia_vi.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ung_dung_quan_ly_san_pham.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ung_dung_quan_ly_san_pham.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../thuchanh/ung_dung_quan_ly_khach_hang" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -231,6 +225,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606134873348</updated>
       <workItem from="1606134875068" duration="2411000" />
+      <workItem from="1606205090036" duration="10000" />
+      <workItem from="1606211807590" duration="81000" />
     </task>
     <servers />
   </component>
@@ -247,6 +243,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1606135138366">
@@ -265,6 +262,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="267" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1606135395181" />
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1606211886422">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1606211886422" />
     <state width="1055" height="221" key="GridCell.Tab.0.bottom" timestamp="1606137289876">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
