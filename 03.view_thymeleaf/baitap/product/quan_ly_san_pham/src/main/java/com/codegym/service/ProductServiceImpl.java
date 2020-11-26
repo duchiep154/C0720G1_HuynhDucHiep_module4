@@ -32,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product product) {
+        product.setId((products.size() > 0) ? (products.size() + 1) : 1);
         products.put(product.getId(),product);
 
     }
