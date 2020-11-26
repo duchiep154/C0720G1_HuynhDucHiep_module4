@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Edit Customer</title>
+</head>
+<body>
+<header th:replace="/common::hearderCustomer"></header>
+<div align="center">
+    <div style="width: 300px; height: 400px">
+        <div class="container">
+            <h3 style="color: red">You want to delete this customer?</h3>
+            <form class="well form-horizontal" action=" " th:action="@{/customer/remove}" th:object="${customerDelete}"
+                  method="post" id="contact_form">
+                <fieldset style="background-color: #20b2395e">
+
+                    <!-- Form Name -->
+                    <legend>
+                        <center><h2><b>Edit Customer</b></h2></center>
+                    </legend>
+                    <br>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">ID Customer</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <input name="ID" placeholder="ID" class="form-control" type="text" th:field="*{id}"
+                                       readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name Customer</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="nameCustomer" placeholder="Name Customer" class="form-control" type="text"
+                                       th:field="*{name}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Email</label>
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <input name="emailCustomer" placeholder="Email Customer" class="form-control"
+                                       type="text" th:field="*{email}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Address</label>
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <input name="addressCustomer" placeholder="Address Customer" class="form-control"
+                                       type="text" th:field="*{address}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-md-2"><br>
+                            <button type="submit" class="btn btn-warning">DELETE <span
+                                    class="glyphicon glyphicon-send"></span></button>
+                            <button type="submit" class="btn btn-warning"><a th:href="@{/}"
+                                                                             style="text-decoration: none; color: #0c0c0c">CANCEL</a>
+                            </button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="/common::footerCustomer"></footer>
+</body>
+</html>
