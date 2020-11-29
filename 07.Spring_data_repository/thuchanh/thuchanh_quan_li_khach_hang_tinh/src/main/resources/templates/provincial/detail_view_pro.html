@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Edit Provincial</title>
+</head>
+<body>
+<header th:replace="/common_pro::hearderProvincial"></header>
+<div align="center">
+    <div style="width: 300px; height: 350px">
+        <div class="container">
+            <form class="well form-horizontal" action=" " th:action="@{/provincial/detailView}" th:object="${provincialView}" method="post"  id="contact_form">
+                <fieldset style="background-color: #20b2395e">
+
+                    <!-- Form Name -->
+                    <legend><center><h2><b>Edit Provincial</b></h2></center></legend><br>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">ID Provincial</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <input name="idProvincial" placeholder="ID" class="form-control"  type="text" th:field="*{id}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Name Provincial</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="nameProvincial" placeholder="Name Provincial" class="form-control"  type="text" th:field="*{name}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4"><br>
+                            <button type="submit" class="btn btn-warning" ><a th:href="@{/}" style="text-decoration: none; color: #0c0c0c">Back to Customer List</a></button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="/common_pro::footerProvincial"></footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Add New Blog</title>
+</head>
+<body>
+<header th:replace="/common::hearderBlog"></header>
+<div align="center">
+<div style="width: 250px; height: 350px">
+<div class="container">
+    <form class="well form-horizontal" action=" " th:action="@{/blog/save}" th:object="${blogSave}" method="post"  id="contact_form">
+        <fieldset style="background-color: #20b2395e">
+
+            <!-- Form Name -->
+            <legend><center><h2><b>Add New Blog</b></h2></center></legend><br>
+
+            <!-- Text input-->
+
+<!--            <div class="form-group">-->
+<!--                <label class="col-md-4 control-label">ID Customer</label>-->
+<!--                <div class="col-md-4 inputGroupContainer">-->
+<!--                    <div class="input-group">-->
+<!--                        <input name="ID" placeholder="ID" class="form-control"  type="text" th:field="*{id}" >-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Author</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="nameBlog" placeholder="Name Blog" class="form-control"  type="text" th:field="*{author}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Content Blog</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <input name="contentBlog" placeholder="Content Blog" class="form-control"  type="text" th:field="*{contentBlog}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Date</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  name="date" placeholder="Address date" class="form-control"  type="date" th:field="*{date}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-2"><br>
+                    <button type="submit" class="btn btn-warning" >CREATE <span class="glyphicon glyphicon-send"></span></button>
+                    <button type="submit" class="btn btn-warning"><a th:href="@{/}" style="text-decoration: none; color: #0c0c0c">CANCEL</a></button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+</div>
+</div>
+<footer th:replace="/common::footerBlog"></footer>
+</body>
+</html>
