@@ -1,6 +1,7 @@
 package com.codegym.service.customer;
 
-import com.codegym.model.Customer;
+import com.codegym.entity.Customer;
+import com.codegym.entity.Provincial;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
+    Page<Customer> findAllByProvincial(Pageable pageable , Optional<Provincial> provincial);
     List<Customer> findAll();
 
     Page<Customer> findAll(Pageable pageable);

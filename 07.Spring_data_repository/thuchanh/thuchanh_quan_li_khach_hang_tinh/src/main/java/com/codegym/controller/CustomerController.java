@@ -1,6 +1,6 @@
 package com.codegym.controller;
 
-import com.codegym.model.Customer;
+import com.codegym.entity.Customer;
 import com.codegym.service.customer.CustomerService;
 import com.codegym.service.provincial.ProvincialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +60,7 @@ public class CustomerController {
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("customerEdit", customerService.findById(id));
+        model.addAttribute("provinceList", this.provincialService.findAll());
         return "edit";
     }
 
@@ -86,6 +87,7 @@ public class CustomerController {
     @GetMapping("/{id}/view")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("customerView", customerService.findById(id));
+        model.addAttribute("provinceList",provincialService.findAll());
         return "detail_view";
     }
 

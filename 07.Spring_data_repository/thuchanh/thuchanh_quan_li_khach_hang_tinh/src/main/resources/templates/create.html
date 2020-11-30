@@ -7,87 +7,90 @@
 <body>
 
 <div align="center">
-<div style="width: 250px; height: 350px">
-<div class="container">
-    <form class="well form-horizontal" action=" " th:action="@{/customer/save}" th:object="${customerSave}" method="post"  id="contact_form">
-        <fieldset style="background-color: #20b2395e">
+    <div class="form-select-button">
+        <div class="container">
+            <form class="well form-horizontal" action=" " th:action="@{/customer/save}" th:object="${customerSave}" method="post"  id="contact_form">
+                <fieldset >
 
-            <!-- Form Name -->
-            <legend><center><h2><b>Add New Customer</b></h2></center></legend><br>
+                    <!-- Form Name -->
+                    <legend><center><h2><b>Add New Customer</b></h2></center></legend><br>
 
-            <!-- Text input-->
+                    <!-- Text input-->
 
-<!--            <div class="form-group">-->
-<!--                <label class="col-md-4 control-label">ID Customer</label>-->
-<!--                <div class="col-md-4 inputGroupContainer">-->
-<!--                    <div class="input-group">-->
-<!--                        <input name="ID" placeholder="ID" class="form-control"  type="text" th:field="*{id}" >-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+        <!--            <div class="form-group">-->
+        <!--                <label class="col-md-4 control-label">ID Customer</label>-->
+        <!--                <div class="col-md-4 inputGroupContainer">-->
+        <!--                    <div class="input-group">-->
+        <!--                        <input name="ID" placeholder="ID" class="form-control"  type="text" th:field="*{id}" >-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
 
-            <!-- Text input-->
+                    <!-- Text input-->
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" >Name Customer</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input name="nameCustomer" placeholder="Name Customer" class="form-control"  type="text" th:field="*{name}">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Name Customer</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="nameCustomer" placeholder="Name Customer" class="form-control"  type="text" th:field="*{name}">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" >Provincial</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-<!--                        <input name="provincial" placeholder="Provincial" class="form-control"  type="text" th:field="*{provincial}">-->
-                        <select th:field="*{provincial}">
-                            <option th:each="provincial : ${provinceList}"
-                                    th:value="${provincial.id}" th:text="${provincial.name}"></option>
-                        </select>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Provincial</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group"  align="center">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <!--                        <input name="provincial" placeholder="Provincial" class="form-control"  type="text" th:field="*{provincial}">-->
+                                <select th:field="*{provincial}">
+                                    <option th:each="provincial : ${provinceList}"
+                                            th:value="${provincial.id}" th:text="${provincial.name}" ></option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Email</label>
-                <div class="col-md-4 selectContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                        <input name="emailCustomer" placeholder="Email Customer" class="form-control"  type="text" th:field="*{email}">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Email</label>
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <input name="emailCustomer" placeholder="Email Customer" class="form-control"  type="text" th:field="*{email}">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Text input-->
+                    <!-- Text input-->
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Address</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  name="addressCustomer" placeholder="Address Customer" class="form-control"  type="text" th:field="*{address}">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Address</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input  name="addressCustomer" placeholder="Address Customer" class="form-control"  type="text" th:field="*{address}">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-2"><br>
-                    <button type="submit" class="btn btn-warning" >CREATE <span class="glyphicon glyphicon-send"></span></button>
-                    <button type="submit" class="btn btn-warning"><a th:href="@{/}" style="text-decoration: none; color: #0c0c0c">CANCEL</a></button>
-                </div>
-            </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <div class="col-md-4  ">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                            <button type="submit" class="btn btn-warning"><a th:href="@{/}" style="text-decoration: none; color: #0c0c0c">CANCEL</a></button>
 
-        </fieldset>
-    </form>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 <footer th:replace="/common::footerCustomer"></footer>
 </body>
 </html>

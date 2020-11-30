@@ -6,53 +6,79 @@
 
 </head>
 <body>
+<div class="container">
+    <div align="center">
+        <!-- Button -->
+        <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a th:href="@{/customer/create}"
+                                                                                                       style="text-decoration: none; color: #0c0c0c">Create New Customer</a>
+        </button>
+        <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a th:href="@{/provincial}"
+                                                                                                       style="text-decoration: none; color: #0c0c0c">province home</a>
+        </button>
+        <div class="notify" style="color: red">
+            <div th:if="${message}"><span th:text="${message}"></span></div>
+        </div>
+        <!--    <form action="/customer">-->
+        <!--        <input type="text" name="keyword" th:value="${keywordOld}" />-->
+        <!--        <input type="submit" value="Search" />-->
+        <!--    </form>-->
+        <!--- Bắt Đầu Component SearchBox-->
+        <form action="/customer" class="search-box">
+<!--            <input type="text" name="keyword" th:value="${keywordOld}"  placeholder="Tìm Kiếm">-->
 
-<div align="center">
-    <!-- Button -->
-            <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a th:href="@{/customer/create}"
-                                                             style="text-decoration: none; color: #0c0c0c">Create New Customer</a>
-            </button>
-    <div class="notify" style="color: red">
-        <div th:if="${message}"><span th:text="${message}"></span></div>
+<!--            <button class="search-button" type="submit" value="Search" name="Tìm Kiếm">-->
+<!--                <i class="fa fa-search" aria-hidden="true"></i>-->
+<!--            </button>-->
+
+
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" name="keyword" th:value="${keywordOld}" class="search-input" placeholder="Type to search" />
+                    <button type="submit" value="Search" class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+                </div>
+                <span class="close" onclick="searchToggle(this, event);"></span>
+            </div>
+        </form>
+
     </div>
-    <form action="/customer">
-        <input type="text" name="keyword" th:value="${keywordOld}" />
-        <input type="submit" value="Search" />
-    </form>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Provincial</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer:${customerList}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.provincial.name}"></td>
+            <td th:text="${customer.email}"></td>
+            <td th:text="${customer.address}"></td>
+            <td><a th:href="@{/customer/{id}/edit(id=${customer.getId()})}">Edit</a></td>
+            <td><a th:href="@{/customer/{id}/delete(id=${customer.getId()})}">Delete</a></td>
+            <td><a th:href="@{/customer/{id}/view(id=${customer.getId()})}">View</a></td>
+            <!--        <td><a th:href="@{/customer/{name}/remove(name=${customer.getName()})}">Delete By Name</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <a th:if="${customerList.hasPrevious()}" th:href="@{/customer(page = ${customerList.number - 1}, keyword = ${keywordOld})}">Previous</a>
+        <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
+        <a th:if="${customerList.hasNext()}" th:href="@{/customer(page = ${customerList.number + 1}, keyword = ${keywordOld})}">Next</a>
+    </div>
+    <footer th:replace="/common::footerCustomer"></footer>
+
 </div>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Provincial</th>
-        <th scope="col">Email</th>
-        <th scope="col">Address</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-        <th scope="col">View</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="customer:${customerList}">
-        <td th:text="${customer.id}"></td>
-        <td th:text="${customer.name}"></td>
-        <td th:text="${customer.provincial.name}"></td>
-        <td th:text="${customer.email}"></td>
-        <td th:text="${customer.address}"></td>
-        <td><a th:href="@{/customer/{id}/edit(id=${customer.getId()})}">Edit</a></td>
-        <td><a th:href="@{/customer/{id}/delete(id=${customer.getId()})}">Delete</a></td>
-        <td><a th:href="@{/customer/{id}/view(id=${customer.getId()})}">View</a></td>
-        <!--        <td><a th:href="@{/customer/{name}/remove(name=${customer.getName()})}">Delete By Name</a></td>-->
-    </tr>
-    </tbody>
-</table>
-<div>
-    <a th:if="${customerList.hasPrevious()}" th:href="@{/customer(page = ${customerList.number - 1}, keyword = ${keywordOld})}">Previous</a>
-    <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
-    <a th:if="${customerList.hasNext()}" th:href="@{/customer(page = ${customerList.number + 1}, keyword = ${keywordOld})}">Next</a>
-</div>
-<footer th:replace="/common::footerCustomer"></footer>
+
 </body>
 </html>

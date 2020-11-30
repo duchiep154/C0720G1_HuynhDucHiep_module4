@@ -1,8 +1,8 @@
 package com.codegym.service.customer;
 
-import com.codegym.model.Customer;
+import com.codegym.entity.Customer;
+import com.codegym.entity.Provincial;
 import com.codegym.repository.CustomerRepository;
-import com.codegym.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +15,11 @@ import java.util.Optional;
 public class CustomerServiceImp implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Override
+    public Page<Customer> findAllByProvincial(Pageable pageable , Optional<Provincial> provincial) {
+        return customerRepository.findAllByProvincial(pageable,provincial);
+    }
 
     @Override
     public List<Customer> findAll() {

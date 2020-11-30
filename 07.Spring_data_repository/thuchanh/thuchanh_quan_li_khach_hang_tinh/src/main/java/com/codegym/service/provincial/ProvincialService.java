@@ -1,6 +1,6 @@
 package com.codegym.service.provincial;
 
-import com.codegym.model.Provincial;
+import com.codegym.entity.Provincial;
 
 import java.util.List;
 import java.util.Optional;

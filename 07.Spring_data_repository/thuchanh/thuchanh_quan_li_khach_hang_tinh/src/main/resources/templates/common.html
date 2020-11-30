@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -18,6 +19,228 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+    <style>
+        /*body{*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    display: flex;*/
+        /*    !*height:100vh;*!*/
+        /*    font-family: 'Open Sans', sans-serif;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    !*background: #b1b15c;*!*/
+        /*}*/
+
+        /*.search-box{*/
+        /*    position: absolute;*/
+        /*    background: #fff;*/
+        /*    height: 40px;*/
+        /*    padding: 10px;*/
+        /*    border-radius: 40px;*/
+        /*    box-shadow: 0 1px 1px rgba(0,0,0,0.12),*/
+        /*    0 2px 2px rgba(0,0,0,0.12),*/
+        /*    0 4px 4px rgba(0,0,0,0.12),*/
+        /*    0 8px 8px rgba(0,0,0,0.12),*/
+        /*    0 16px 16px rgba(0,0,0,0.12);*/
+        /*}*/
+
+
+        /*.search-box input{*/
+        /*    background: none;*/
+        /*    border: none;*/
+        /*    outline: none;*/
+        /*    float: left;*/
+        /*    padding: 0;*/
+        /*    font-size: 20px;*/
+        /*    line-height: 40px;*/
+        /*    width: 0px;*/
+        /*    transition: all 0.9s;*/
+        /*}*/
+
+        /*.search-box:hover input{*/
+        /*    width: 240px;*/
+        /*    padding: 0 6px;*/
+        /*}*/
+
+        /*.search-box input:focus{*/
+        /*    width: 240px;*/
+        /*    padding: 0 6px;*/
+        /*}*/
+
+        /*.search-button{*/
+        /*    background: none;*/
+        /*    outline: none;*/
+        /*    border: none;*/
+        /*    width: 40px;*/
+        /*    margin-top: -21px;*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.search-button i {*/
+        /*    background: #1b2a49;*/
+        /*    z-index: 1;*/
+        /*    font-size: 30px;*/
+        /*    color: #fff;*/
+        /*    padding: 25px;*/
+        /*    border-radius: 50px;*/
+        /*    box-shadow: 0 1px 2px rgba(0,0,0,0.07),*/
+        /*    0 2px 4px rgba(0,0,0,0.07),*/
+        /*    0 4px 8px rgba(0,0,0,0.07),*/
+        /*    0 8px 16px rgba(0,0,0,0.07),*/
+        /*    0 16px 32px rgba(0,0,0,0.07),*/
+        /*    0 32px 64px rgba(0,0,0,0.07);;*/
+        /*}*/
+        body {
+            background: #ffffff;
+        }
+
+        ::selection {
+            background: #94a868;
+        }
+
+        .search-wrapper {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top:50%;
+            left:50%;
+        }
+        .search-wrapper.active {}
+
+        .search-wrapper .input-holder {
+            height: 70px;
+            width:70px;
+            overflow: hidden;
+            background: rgba(255,255,255,0);
+            border-radius:6px;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+        .search-wrapper.active .input-holder {
+            width:450px;
+            border-radius: 50px;
+            /*background: rgba(0, 0, 0, 0.5);*/
+            transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+        }
+        .search-wrapper .input-holder .search-input {
+            width:100%;
+            height: 50px;
+            padding:0px 70px 0 20px;
+            opacity: 0;
+            position: absolute;
+            top:0px;
+            left:0px;
+            background: transparent;
+            box-sizing: border-box;
+            border:none;
+            outline:none;
+            font-family:"Open Sans", Arial, Verdana;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            color: rgba(62, 54, 54, 0.97);
+            transform: translate(0, 60px);
+            transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+            transition-delay: 0.3s;
+        }
+        .search-wrapper.active .input-holder .search-input {
+            opacity: 1;
+            transform: translate(0, 10px);
+        }
+        .search-wrapper .input-holder .search-icon {
+            width:70px;
+            height:70px;
+            border:none;
+            border-radius:6px;
+            background: #dccdcd;
+            padding:0px;
+            outline:none;
+            position: relative;
+            z-index: 2;
+            float:right;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .search-wrapper.active .input-holder .search-icon {
+            width: 50px;
+            height:50px;
+            margin: 10px;
+            border-radius: 30px;
+        }
+        .search-wrapper .input-holder .search-icon span {
+            width:22px;
+            height:22px;
+            display: inline-block;
+            vertical-align: middle;
+            position:relative;
+            transform: rotate(45deg);
+            transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+        }
+        .search-wrapper.active .input-holder .search-icon span {
+            transform: rotate(-45deg);
+        }
+        .search-wrapper .input-holder .search-icon span::before, .search-wrapper .input-holder .search-icon span::after {
+            position: absolute;
+            content:'';
+        }
+        .search-wrapper .input-holder .search-icon span::before {
+            width: 4px;
+            height: 11px;
+            left: 9px;
+            top: 18px;
+            border-radius: 2px;
+            background: #FE5F55;
+        }
+        .search-wrapper .input-holder .search-icon span::after {
+            width: 14px;
+            height: 14px;
+            left: 0px;
+            top: 0px;
+            border-radius: 16px;
+            border: 4px solid #FE5F55;
+        }
+        .search-wrapper .close {
+            position: absolute;
+            z-index: 1;
+            top:24px;
+            right:20px;
+            width:25px;
+            height:25px;
+            cursor: pointer;
+            transform: rotate(-180deg);
+            transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+            transition-delay: 0.2s;
+        }
+        .search-wrapper.active .close {
+            right:-50px;
+            transform: rotate(45deg);
+            transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+            transition-delay: 0.5s;
+        }
+        .search-wrapper .close::before, .search-wrapper .close::after {
+            position:absolute;
+            content:'';
+            background: #FE5F55;
+            border-radius: 2px;
+        }
+        .search-wrapper .close::before {
+            width: 5px;
+            height: 25px;
+            left: 10px;
+            top: 0px;
+        }
+        .search-wrapper .close::after {
+            width: 25px;
+            height: 5px;
+            left: 0px;
+            top: 10px;
+        }
+
+
+    </style>
+
+
 </head>
 <body>
 <!--<head th:fragment="hearderCustomer">-->
@@ -30,6 +253,21 @@
     <div align="center">
         CodeGym 2020
     </div>
+
+    <script>
+        function searchToggle(obj, evt){
+            var container = $(obj).closest('.search-wrapper');
+            if(!container.hasClass('active')){
+                container.addClass('active');
+                evt.preventDefault();
+            }
+            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                container.removeClass('active');
+                // clear input
+                container.find('.search-input').val('');
+            }
+        }
+    </script>
 </footer>
 </body>
 </html>
