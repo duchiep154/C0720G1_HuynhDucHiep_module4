@@ -1,5 +1,9 @@
 package com.codegym.entity;
 
+import com.codegym.common.CheckBirthday;
+import com.codegym.common.CheckEmail;
+import com.codegym.common.CheckName;
+import com.codegym.common.CheckPhone;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -18,19 +22,26 @@ public class User implements Validator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Do Not Blank")
-    @Size(min = 2, max = 45,message = "Input 5 - 45 character")
+//    @NotBlank(message = "Do Not Blank")
+//    @Size(min = 2, max = 45,message = "Input 5 - 45 character")
+    @CheckName  // custom annotation validate
     private String firstName;
 
-    @NotBlank(message = "Do Not Blank")
-    @Size(min = 2, max = 45,message = "Input 5 - 45 character")
+//    @NotBlank(message = "Do Not Blank")
+//    @Size(min = 2, max = 45,message = "Input 5 - 45 character")
+    @CheckName
     private String lastName;
-
-    @Pattern(regexp = "^0\\d{9}$", message = "Wrong Format - 0XXXXXXXXX\n with X: 0-9")
+//   su dung validate binh thuong
+//    @Pattern(regexp = "^0\\d{9}$", message = "Wrong Format - 0XXXXXXXXX\n with X: 0-9")
+    @CheckPhone
     private String phoneNumber;
-
-    @Email(message = "Wrong Format \n vd: abc@abc.com.vn")
+//    su dung validate binh thuong
+//    @Email(message = "Wrong Format \n vd: abc@abc.com.vn")
+    @CheckEmail
     private String email;
+
+   @CheckBirthday
+    private String dayOfBirth;
 
     public User() {
     }
@@ -75,6 +86,14 @@ public class User implements Validator {
         this.email = email;
     }
 
+    public String getDayOfBirth() {
+        return dayOfBirth;
+    }
+
+    public void setDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+    }
+
     @Override
     public boolean supports(Class<?> clazz) {
         return false;
@@ -82,5 +101,13 @@ public class User implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+//        User user = (User) target;
+//
+//        if (user.firstName.equals("") && user.lastName.equals("")) {
+//            errors.rejectValue("name", "name.blank");
+//        }
+//        if (user.firstName.length()<=2 && user.lastName.length()){
+//
+//        }
     }
 }
