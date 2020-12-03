@@ -23,34 +23,74 @@
         <div th:if="${message}"><span th:text="${message}"></span></div>
     </div>
 </div>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Fist Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Email</th>
-        <th scope="col">Birthday</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-        <th scope="col">View</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user:${userList}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.firstName}"></td>
-        <td th:text="${user.lastName}"></td>
-        <td th:text="${user.phoneNumber}"></td>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.dayOfBirth}"></td>
-        <td><a th:href="@{/user/{id}/edit(id=${user.getId()})}">Edit</a></td>
-        <td><a th:href="@{/user/{id}/delete(id=${user.getId()})}">Delete</a></td>
-        <td><a th:href="@{/user/{id}/view(id=${user.getId()})}">View</a></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container main-content list">
+    <th:block th:unless="${#lists.isEmpty(user.pageList)}">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Fist Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Birthday</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user:${user.pageList}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.phoneNumber}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.dayOfBirth}"></td>
+                        <td><a th:href="@{/user/{id}/edit(id=${user.getId()})}">Edit</a></td>
+                        <td><a th:href="@{/user/{id}/delete(id=${user.getId()})}">Delete</a></td>
+                        <td><a th:href="@{/user/{id}/view(id=${user.getId()})}">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <li
+                        th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+                    <a class="page-link" th:href="@{/user/page/1}">First</a>
+                </li>
+                <li
+                        th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+                    <a class="page-link" aria-label="Previous"
+                       th:href="@{|${baseUrl}${currentIndex - 1}|}"
+                       title='Go to previous page'><span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span></a>
+                </li>
+                <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+                    th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+                    <a class="page-link" th:href="@{|${baseUrl}${item}|}"> <span
+                            th:text='${item}'>1</span>
+                    </a>
+                </li>
+                <li
+                        th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+                    <a class="page-link" aria-label="Next"
+                       th:href="@{|${baseUrl}${currentIndex + 1}|}" title='Go to next page'><span
+                            aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+                </li>
+                <li
+                        th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+                    <a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
+                </li>
+            </ul>
+
+        </div>
+    </th:block>
+
+</div>
+
+
+
 <footer th:replace="~{common/common::footerUser}"></footer>
 </body>
 </html>

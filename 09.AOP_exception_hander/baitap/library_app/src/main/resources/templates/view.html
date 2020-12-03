@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout::head}"></head>
+<body>
+<nav th:replace="~{layout::nav-bar-book}"></nav>
+<div id="table-container" class="bg-white">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">describe</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Borrow</th>
+            <th scope="col">Return</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${bookList}">
+            <th scope="row" th:text="${book.id}"></th>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.describeBook}">
+            <td th:text="${book.quantity}">
+            <td><a th:href="@{/borrow(id=${book.id})}"><i class="material-icons">read_more</i></a></td>
+            <td><a th:href="@{/return(id=${book.id})}"><i class="material-icons">replay</i></a></td>
+            <td><a th:href="@{/delete(id=${book.id})}"><i class="material-icons">&#xE872;</i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
