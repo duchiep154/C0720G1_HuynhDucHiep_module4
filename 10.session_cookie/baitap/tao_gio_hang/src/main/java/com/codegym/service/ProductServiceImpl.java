@@ -2,7 +2,7 @@ package com.codegym.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.codegym.model.Product;
+import com.codegym.entity.Product;
 import com.codegym.repository.ProductRepository;
 
 @Service

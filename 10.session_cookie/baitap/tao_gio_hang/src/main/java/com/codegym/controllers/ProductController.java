@@ -6,10 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
-import com.codegym.model.CartItems;
-import com.codegym.model.Product;
+import com.codegym.entity.Product;
 import com.codegym.service.ProductService;
 
 import java.util.List;
@@ -19,13 +17,13 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("")
+    @GetMapping("/product")
     public String showProductList(Model model) {
         model.addAttribute("productList", (List<Product>) productService.findAll());
         return "product/list";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/product/create")
     public ModelAndView showCreateProductForm() {
         ModelAndView modelAndView = new ModelAndView("/product/create");
         modelAndView.addObject("product", new Product());
@@ -35,10 +33,10 @@ public class ProductController {
     @PostMapping("/save")
     public String createNewProduct(Product product) {
         productService.save(product);
-        return "redirect:";
+        return "redirect:/product";
     }
 
-    @GetMapping("/view/{id}")
+    @GetMapping("/product/view/{id}")
     public ModelAndView showProductInformation(@PathVariable("id") long id) {
         return new ModelAndView("product/view", "product", productService.findById(id));
     }

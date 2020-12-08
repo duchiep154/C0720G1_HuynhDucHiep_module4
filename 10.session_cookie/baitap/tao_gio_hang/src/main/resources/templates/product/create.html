@@ -9,13 +9,13 @@
     <span class="anchor" id="formUserEdit"></span>
     <hr class="my-5">
 
-    <!-- form user info -->
+    <!-- form users info -->
     <div class="card card-outline-secondary">
         <div class="card-header">
             <h3 class="mb-0">Create New Product</h3>
         </div>
         <div class="card-body">
-            <form class="form" role="form" th:action="@{/save}" th:object="${product}" method="post">
+            <form class="form" appRole="form" th:action="@{/save}" th:object="${product}" method="post">
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Product name</label>
                     <div class="col-lg-9">
@@ -57,7 +57,7 @@
             </form>
         </div>
     </div>
-    <!-- /form user info -->
+    <!-- /form users info -->
 </div>
 
 <footer th:replace="~{/product/layout::footer}"></footer>

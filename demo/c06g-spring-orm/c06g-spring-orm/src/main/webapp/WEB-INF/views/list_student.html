@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List student</title>
+</head>
+<body>
+    <header th:replace="~{common::headerStudent}"></header>
+    <p style="color: green" th:text="${message}"></p>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date of birth</th>
+            <th>Rank</th>
+            <th>Gender</th>
+            <th>Request param</th>
+            <th>Path variable</th>
+        </tr>
+        <th:block th:each="student : ${listStudent}">
+            <tr>
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.dateOfBirth}"></td>
+                <td>
+                    <span th:if="${student.mark < 5}">Bad</span>
+                    <span th:if="${student.mark >= 5}">Good</span>
+                </td>
+                <td th:switch="${student.gender}">
+                    <span th:case="1">Male</span>
+                    <span th:case="0">Female</span>
+                    <span th:case="*">None</span>
+                </td>
+                <td><a th:href="@{/student/detail(id=${student.id}, name=${student.name})}">Request param</a></td>
+                <td><a th:href="@{/student/detail/{id}(id=${student.id})}">Path variable</a></td>
+            </tr>
+        </th:block>
+    </table>
+<!--    <footer th:insert="common::footerStudent"></footer>-->
+<!--    <th:block th:insert="common::footerStudent"></th:block>-->
+    <footer th:replace="common::footerStudent"></footer>
+</body>
+</html>

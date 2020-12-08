@@ -1,7 +1,7 @@
 package com.codegym.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.codegym.model.Product;
+import com.codegym.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 }

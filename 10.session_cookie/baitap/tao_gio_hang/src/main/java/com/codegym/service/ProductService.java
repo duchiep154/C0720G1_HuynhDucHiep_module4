@@ -1,6 +1,6 @@
 package com.codegym.service;
 
-import com.codegym.model.Product;
+import com.codegym.entity.Product;
 
 public interface ProductService {
     Iterable<Product> findAll();

@@ -1,13 +1,12 @@
 package com.codegym.controllers;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.codegym.model.Cart;
-import com.codegym.model.CartItems;
-import com.codegym.model.Product;
+import com.codegym.entity.Cart;
+import com.codegym.entity.CartItems;
+import com.codegym.entity.Product;
 import com.codegym.service.ProductService;
 
 import java.util.Map;
