@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List student</title>
+</head>
+<body>
+    <div th:replace="~{common_student::headerStudent}"></div>
+    <form action="/student/list">
+        <input type="text" name="keyword" />
+        <input type="submit" value="Search">
+    </form>
+    <p style="color: green" th:text="${messageSuccess}"></p>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th th:text="#{student.name}">Name</th>
+            <th>Date of birth</th>
+            <th>Gender</th>
+            <th>Type</th>
+            <th>Class Room</th>
+            <th>Action</th>
+            <th>Action (Path)</th>
+        </tr>
+<!--        <c:forEach var="student" items="${listStudent}">-->
+<!--            <tr th:each="student : ${listStudent}">-->
+        <th:block th:each="student : ${listStudent}">
+            <tr>
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.dateOfBirth}"></td>
+                <td th:switch="${student.gender}">
+                    <th:block th:case="0">Female</th:block>
+                    <th:block th:case="1">Male</th:block>
+                    <th:block th:case="*">Unknown</th:block>
+                </td>
+                <td>
+                    <span th:if="${student.grade < 5}">Bad</span>
+                    <span th:if="${student.grade >= 5 && student.grade <= 7}">Good</span>
+                    <span th:if="${student.grade >= 8 && student.grade <= 10}">Very Good</span>
+                </td>
+                <td th:text="${student.classRoom.name}"></td>
+                <td><a th:href="@{/student/detail(id=${student.id})}">Detail student</a></td>
+                <td><a th:href="@{/student/detail/{id}(id=${student.id})}">Detail student</a></td>
+            </tr>
+        </th:block>
+<!--        </c:forEach>-->
+    </table>
+    <a th:if="${listStudent.hasPrevious()}" th:href="@{/student/list(page = ${listStudent.number - 1}, keyword = ${keywordAfterCheck})}">Previous</a>
+    <span th:text="${listStudent.number + 1}"></span>/<span th:text="${listStudent.totalPages}"></span>
+    <a th:if="${listStudent.hasNext()}" th:href="@{/student/list(page = ${listStudent.number + 1}, keyword = ${keywordAfterCheck})}">Next</a>
+<!--    <div th:utext="${contentBlog}"></div>-->
+    <th:block th:each="i: ${#numbers.sequence(0, listStudent.totalPages - 1)}">
+        <a th:href="@{/student/list(page = ${i}, keyword = ${keywordAfterCheck})}" th:text="${i + 1}"></a>
+    </th:block>
+    <a th:href="@{/student/list(page = 0, keyword = ${keywordAfterCheck})}">First</a>
+    <a th:href="@{/student/list(page = ${listStudent.totalPages - 1}, keyword = ${keywordAfterCheck})}">Last</a>
+    <div th:replace="~{common_student::footerStudent}"></div>
+</body>
+</html>

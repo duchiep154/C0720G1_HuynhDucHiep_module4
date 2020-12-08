@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div th:fragment="headerStudent">
+        <a href="/student/create">Go create student</a>
+        <br>
+        <p style="float: right"><span th:text="#{welcome}"></span>, <span th:if="${user != null}" th:text="${user.username}"></span></p>
+        ------------------------------
+    </div>
+
+    <footer th:fragment="footerStudent">
+        ------------------------------
+        <br>
+        @C0720G1
+    </footer>
+</body>
+</html>

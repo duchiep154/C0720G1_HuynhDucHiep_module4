@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" class="inputText">
+    <p id="test">Hello C0720G1 to Angular!</p>
+    <button id="btnChangeColor">Change color</button>
+    <button onclick="changeColor()">Change color JS</button>
+    <button id="btnAssign">Assign value to input</button>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $("#btnChangeColor").click(function() {
+            $("#test").css("color", "red");
+            $("#test").css("font-size", "50pt");
+            $("#test").hide();
+            console.log($(".inputText").val());
+        });
+
+        $("#btnAssign").click(function() {
+            let pTag = $("#test").text();
+            $(".inputText").val(pTag);
+        });
+
+        $(window).load(function() {
+
+        });
+    </script>
+    <script>
+        function changeColor() {
+            document.getElementById("test").style.color = "red";
+            document.getElementById("test").style.display = "none";
+        }
+    </script>
+</body>
+</html>

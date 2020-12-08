@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="inputId">
+    <button id="btnLoad">Load info</button>
+    <div>
+        <p id="pLoadName"></p>
+        <p id="pLoadDateOfBirth"></p>
+    </div>
+    -------------------------
+    <p>Name: <input id="nameStudent" type="text"></p>
+    <p>Date of birth: <input id="dateStudent" type="date"></p>
+    <p>Class:
+        <select id="classRoom">
+            <option value="1">C0720G1</option>
+            <option value="2">C0920G1</option>
+        </select>
+    </p>
+    <button id="btnRegister">Register</button>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $("#btnLoad").click(function() {
+            let idStudent = $("#inputId").val();
+
+            $.ajax({
+                type: "GET", //GET, DELETE, PUT...
+                url: "http://localhost:8080/apiStudent/detail/" + idStudent,
+                dataType: "json",
+                success: function(student){
+                    $("#pLoadName").text(student.name);
+                    $("#pLoadDateOfBirth").text(student.dateOfBirth);
+                    console.log(student);
+                },
+                error: function(result) {
+
+                }
+            });
+        });
+
+        $("#btnRegister").click(function() {
+            let nameS = $("#nameStudent").val();
+            let dateOfBirthS = $("#dateStudent").val();
+            let classRoomIdS = $("#classRoom").val();
+            let objStudent = {
+                "name": nameS,
+                "dateOfBirth": dateOfBirthS,
+                "classRoom" : {
+                    "id": classRoomIdS
+                }
+            };
+
+            $.ajax({
+                type: "POST", //GET, DELETE, PUT...
+                url: "http://localhost:8080/apiStudent/register",
+                data: JSON.stringify(objStudent),
+                contentType: "application/json; charset=utf-8",
+                success: function(result){
+                    console.log("Success");
+                },
+                error: function(result) {
+                    console.log("Error");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
