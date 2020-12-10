@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html" lang="en">
+
+<header th:replace="common/common::hearderBlog">
+
+</header>
+
+<body>
+<nav th:replace="~{/common/common::nav-bar-blog}"></nav>
+
+<div align="center">
+
+    <!-- Button -->
+            <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a th:href="@{/category/create}"
+                                                             style="text-decoration: none; color: #0c0c0c">Create New Category</a>
+            </button>
+    <div class="notify" style="color: red">
+        <div th:if="${message}"><span th:text="${message}"></span></div>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        <th scope="col">View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category:${categoryList}">
+        <td th:text="${category.id}"></td>
+        <td><a th:href="@{/blog/blog-of-category(id=${category.id})}" th:text="${category.name}"></a></td>
+        <td><a th:href="@{/category/{id}/edit(id=${category.getId()})}">Edit</a></td>
+        <td><a th:href="@{/category/{id}/delete(id=${category.getId()})}">Delete</a></td>
+        <td><a th:href="@{/category/{id}/view(id=${category.getId()})}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<div style="margin-left: 1230px">
+<a th:if="${categoryList.hasPrevious()}" th:href="@{/category(page = ${categoryList.number - 1})}">Previous</a>
+<span th:text="${categoryList.number + 1}"></span>/<span th:text="${categoryList.totalPages}"></span>
+<a th:if="${categoryList.hasNext()}" th:href="@{/category(page = ${categoryList.number + 1})}">Next</a>
+</div>
+
+<footer th:replace="common/common::footerBlog"></footer>
+
+</body>
+
+</html>

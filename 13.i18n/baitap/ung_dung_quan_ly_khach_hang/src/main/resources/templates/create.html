@@ -5,9 +5,9 @@
     <title th:text="#{create.title}">Add New Customer</title>
 </head>
 <body>
-<header th:replace="/common::hearderCustomer"></header>
+<head th:include="/common::hearderCustomer"></head>
 <div align="center">
-<div style="width: 250px; height: 350px">
+<div >
 <div class="container">
     <form class="well form-horizontal" action=" " th:action="@{/customer/save}" th:object="${customerSave}" method="post"  id="contact_form">
         <fieldset style="background-color: #20b2395e">

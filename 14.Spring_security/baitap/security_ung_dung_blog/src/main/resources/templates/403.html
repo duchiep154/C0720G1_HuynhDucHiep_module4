@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body{
+            background-color:aliceblue;
+        }
+    </style>
+</head>
+<body>
+<head th:replace="common/common::hearderBlog">
+
+<nav th:replace="~{/common/common::nav-bar-blog}"></nav>
+
+<div align="center">
+    <img src="https://giatin.com.vn/wp-content/uploads/2019/11/loi-laptop-thuong-gap.jpg" height="440" width="580" alt="error-icon"/>
+    <h2>No permission</h2>
+</div>
+</body>
+</html>
