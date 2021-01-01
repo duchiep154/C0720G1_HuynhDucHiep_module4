@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Customer</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div>
+            <th:block th:replace="fragment :: header"/>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <form action="#" th:action="@{/giaodich/create}" method="post" th:object="${giaoDichNew}">
+                    <div class="text-center">
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: darkblue"
+                            id="add">
+                            <strong>tạo mới giao dich</strong></h3>
+                    </div>
+                    <div class="modal-body">
+<!--                        <div class="form-group">-->
+<!--                            <label for="id">ID :</label>-->
+<!--                            <input type="text" class="form-control" id="id" th:field="*{id}" required/>-->
+<!--                            <p style="color: red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>-->
+<!--                            <p style="color: red" th:text="${messageIdExist}"></p>-->
+<!--                        </div>-->
+
+
+                        <div class="form-group">
+                            <label for="Customer">Customer name :</label>
+                            <select class="form-control" id="Customer" th:field="*{customer}" required>
+                                <th:block th:each="customer : ${customerList}">
+                                    <option th:value="${customer.id}" th:text="${customer.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="loaiDichVu">loai dich vu :</label>
+                            <select class="form-control" id="loaiDichVu" th:field="*{loaiDV}" required>
+                                <th:block th:each="loaiDV : ${loaiDVList}">
+                                    <option th:value="${loaiDV.id}" th:text="${loaiDV.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="dienTich">dien Tich :</label>
+                            <input type="text" class="form-control" id="dienTich" th:field="*{dienTich}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="ngayGD">ngay giao dich</label>
+                            <input type="date"  class="form-control" id="ngayGD" th:field="*{ngayGD}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('ngayGD')}" th:errors="*{ngayGD}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="donGia"> don gia :</label>
+                            <input type="text" class="form-control" id="donGia" th:field="*{donGia}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}"></p>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <a th:href="@{/giaodich}" th:text="Cancel"></a>
+                            <input type="submit" class="btn btn-info" value="Create New"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+
+</body>
+</html>

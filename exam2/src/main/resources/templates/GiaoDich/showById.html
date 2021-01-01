@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <th:block th:include="fragments/sidebar"></th:block>
+    <!-- Main Panel -->
+    <div class="main-panel">
+        <th:block th:include="fragments/navbar"></th:block>
+        <!-- Begin Page Content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 th:text="*{id}"  class="title">chi tiết giao dich</h4>
+                                <p class="category">Details</p>
+                            </div>
+
+                            <form th:object="${view}" th:action="@{/giaodich/view}" th:method="post">
+                             
+
+                                <div class="form-group">
+                                    <label for="loaiDichVu">loai dich vu :</label>
+                                    <input type="text" class="form-control" id="loaiDichVu" th:field="*{loaiDV.name}" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dienTich">dien Tich :</label>
+                                    <input type="text" class="form-control" id="dienTich" th:field="*{dienTich}" required/>
+                                    <p style="color: red" th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donGia"> don gia :</label>
+                                    <input type="text" class="form-control" id="donGia" th:field="*{donGia}" required/>
+                                    <p style="color: red" th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngayGD">ngay giao dich</label>
+                                    <input type="date"  class="form-control" id="ngayGD" th:field="*{ngayGD}" required/>
+                                    <p style="color: red" th:if="${#fields.hasErrors('ngayGD')}" th:errors="*{ngayGD}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerName">Khách Hàng</label>
+                                    <input type="text"  class="form-control" id="customerName" th:field="*{customer.name}" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerPhone">Khách Hàng phone</label>
+                                    <input type="text"  class="form-control" id="customerPhone" th:field="*{customer.phone}" readonly/>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a th:href="@{/}" class="btn btn-default">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- End of Main Panel -->
+    <th:block th:include="fragments/footer"></th:block>
+</div>
+
+<th:block th:include="fragments/scripts"></th:block>
+</body>
+</html>

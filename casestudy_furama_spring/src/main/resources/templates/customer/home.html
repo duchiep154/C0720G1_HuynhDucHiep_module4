@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/layout/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{/layout/layout::title}"></div>
+<nav th:replace="~{/layout/layout::navbar}"></nav>
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+<div class="container-fluid">
+    <div class="body position-relative" style="top: 160px">
+        <div class="text-center col-12">
+            <th:block sec:authorize="hasAnyRole('ADMIN')">
+                <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a
+                        th:href="@{/employee/create}"
+                        style="text-decoration: none; color: #0c0c0c"><i class="fas fa-plus" style="color: #6c757d"></i> Add New Employee</a>
+                </button>
+            </th:block>
+            <h2>List of Customer</h2>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Division</th>
+                <th scope="col">Education Degree</th>
+                <th scope="col">Position</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee:${employeeList}">
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.appUser.fullName}"></td>
+                <td th:text="${employee.appUser.birthday}"></td>
+                <td th:text="${employee.appUser.email}"></td>
+                <td th:text="${employee.appUser.address}"></td>
+                <td th:text="${employee.division.name}"></td>
+                <td th:text="${employee.educationDegree.name}"></td>
+                <td th:text="${employee.position.name}"></td>
+                <td>
+                    <a th:href="@{/employee/{id}/view(id=${employee.getId()})}"><i class="fa fa-eye"
+                                                                                   style="color: blue"></i></a>
+                    <th:block sec:authorize="hasAnyRole('ADMIN')">
+                        <a th:href="@{/employee/{id}/edit(id=${employee.getId()})}"><i class="material-icons"
+                                                                                       style="color: hotpink">&#xE254;</i></a>
+                        <!--            <a th:href="@{/employee/{id}/delete(id=${employee.getId()})}"><i class="material-icons" style="color: red">&#xE5C9;</i></a>-->
+                        <a data-toggle="modal" data-target="#deleteEmployeeModal" href="#"
+                           th:data-id="${employee.id}" class="delete" title="Delete"><i class="material-icons"
+                                                                                        style="color: red">&#xE5C9;</i></a>
+                    </th:block>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div >
+
+            <!--    <div th:utext="${contentBlog}"></div>-->
+            <div style="margin-left: 1230px">
+                <a th:if="${employeeList.hasPrevious()}"
+                   th:href="@{/employee(page = ${employeeList.number - 1}, nameSearch = ${keywordOld})}">Previous</a>
+                <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>
+                <a th:if="${employeeList.hasNext()}"
+                   th:href="@{/employee(page = ${employeeList.number + 1}, nameSearch = ${keywordOld})}">Next</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--********************************Xoa Modal-->
+<div id="deleteCustomerModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/customer/remove" method="post">
+                <input type="hidden" name="deleteId" id="deleteId"/>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Customer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="warning" style="color: red; width: 100%"/>
+                    <p class="text-warning"><small style="color: blue">This action cannot be
+                        undone.</small>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+<footer th:replace="layout/layout::footer"></footer>
+
+<!-- --------------------------------------------------- Xóa Modal -------------------------------------------------->
+<script>
+    $(".delete").click(function () {
+        $("#deleteEmployeeModal input[id='deleteId']").val($(this).data("id"));
+        $("#deleteEmployeeModal input[id='warning']").val("Are you sure you want to delete Employee have ID is "
+            + $(this).data("id") + " ?");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class=""
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Common</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            height: 150px;
+            width: 270px;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        .nav-link:hover {
+            background-color: black;
+            margin-left: 25px;
+        }
+
+        h5 {
+            margin-left: 90px;
+        }
+
+        .col-sm-3 img {
+            width: 100%;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            background-color: gray;
+            text-align: center;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<header th:fragment="hearder">
+    <div class="container-fluid">
+        <div class="row" style="background-color: aliceblue">
+            <div class="col-sm-4">
+                <img src="https://furamavietnam.com/wp-content/uploads/2018/10/logo.png" alt="furama-icon"
+                     style="height: 100px; width: 95px; margin-left: 25px">
+            </div>
+
+            <div class="col-sm-4">
+
+
+            </div>
+
+            <div class="col-sm-4">
+
+                <p style="color: green"><i class="fas fa-map-marker-alt"></i> 103 – 105 Đường Võ Nguyên Giáp, Phường
+                    Khuê Mỹ, Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt Nam </p>
+                <p style="color: green"><i class="fas fa-phone-alt"></i> 84-236-3847 333/888</p>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <th:block sec:authorize="hasAnyRole('MANAGER' ,'ADMIN')">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/employee}">Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/customer}">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/service}">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/contract}">Contract</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/contractDetail}">Contract
+                            Detail</a>
+                    </li>
+                </ul>
+                    </th:block>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <a  th:href="@{/login}" style="color: green">Log In</a>
+                    </button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left: 10px"><a
+                               th:href="@{/logout}" style="color: green">Log Out</a>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <hr>
+</header>
+<footer th:fragment="footer">
+    <div align="center">
+        <!--        Language: <a href="?lang=en">English</a> | <a href="?lang=vn">Vietnamese</a><br>-->
+        <div class="row" style="margin-top: 3px">
+            <div class="col-sm-12 footer">
+                <p>huynh duc hiep © 2020</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

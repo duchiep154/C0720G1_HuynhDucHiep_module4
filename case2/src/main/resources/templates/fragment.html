@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            height: 150px;
+            width: 270px;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        .btn {
+            margin-left: 39px;
+        }
+
+        h5 {
+            color: sienna;
+            margin-left: 11%;
+        }
+
+        .col-sm-3 img {
+            width: 95%;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            background-color: aqua;
+            text-align: center;
+            height: 25px;
+        }
+
+        .searchBox {
+            margin-left: 11%;
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+
+<header th:fragment="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8">
+                <img src="furama-icon.png" alt="furama-icon" />
+            </div>
+
+            <div class="col-sm-4" style="margin-top: 35px">
+                <th:block sec:authorize="hasRole('MEMBER') || hasRole('ADMIN')">
+                    <h2>Welcome, <span style="color: red" sec:authentication="principal.username"></span></h2>
+                    <h3 style="color: blue">What do you want ?!</h3>
+                </th:block>
+            </div>
+        </div>
+
+        <div class="row" style="background-color: powderblue">
+            <div class="col-sm-12 icon">
+                <nav class="nav nav-tabs row">
+                    <div class="col-sm-10">
+                        <a th:href="@{/home}" class="btn btn-outline-success my-2 my-sm-0">Home</a>
+                        <a th:href="@{/employee}"
+                           class="btn btn-outline-success my-2 my-sm-0">Employee</a>
+                        <a th:href="@{/customer}"
+                           class="btn btn-outline-success my-2 my-sm-0">Customer</a>
+                        <a th:href="@{/serviceFurama}"
+                           class="btn btn-outline-success my-2 my-sm-0">Service</a>
+                        <a th:href="@{/contract}"
+                           class="btn btn-outline-success my-2 my-sm-0">Contract</a>
+                        <a th:href="@{/contractDetail}"
+                           class="btn btn-outline-success my-2 my-sm-0">
+                            Contract Detail</a>
+                    </div>
+                    <div class="col-sm-2">
+                        <th:block sec:authorize="isAnonymous()">
+                            <a th:href="@{/login}" style="font-weight: bold"
+                               class="btn btn-outline-success my-2 my-sm-0">
+                                Sign In</a>
+                        </th:block>
+                        <th:block sec:authorize="hasRole('MEMBER') || hasRole('ADMIN')">
+                            <a th:href="@{/logout}" style="font-weight: bold"
+                               class="btn btn-outline-success my-2 my-sm-0">
+                                Log Out</a>
+                        </th:block>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<footer th:fragment="footer" class="footer">
+    <p>Web designed by SuPea Jr</p>
+</footer>
+
+</body>
+</html>

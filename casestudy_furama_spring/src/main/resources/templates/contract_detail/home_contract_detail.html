@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Info Contract Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous">
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            height: 150px;
+            width: 270px;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        .nav-link:hover {
+            background-color: black;
+            margin-left: 25px;
+        }
+
+        h5 {
+            margin-left: 90px;
+        }
+
+        .col-sm-3 img {
+            width: 100%;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            background-color: gray;
+            text-align: center;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="common/common::hearder"></header>
+
+<div align="center" class="row">
+    <div class="col-md-6"></div>
+
+    <div class="col-md-4">
+        <form action="/contract">
+            <!--            <button class="btn btn-success" type="submit" style="margin-left: 250px; margin-top: -150px" value="Search"-->
+            <!--            >Search-->
+            <!--            </button>-->
+            <!--            <input class="form-control mr-sm-2" type="text" placeholder="Search By Name" aria-label="Search"-->
+            <!--                   style="width: 250px; margin-top: -105px; margin-left: 390px" name="nameSearch"-->
+            <!--                   th:value="${keywordOld}">-->
+        </form>
+    </div>
+
+    <div class="col-md-2"></div>
+</div>
+
+<div align="center">
+    <h1 style="margin-top: -20px; margin-bottom: 12px">Contract Detail List</h1>
+    <th:block sec:authorize="hasAnyRole('MANAGER')">
+        <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a
+                th:href="@{/contractDetail/create}"
+                style="text-decoration: none; color: #0c0c0c"><i class="fas fa-plus" style="color: #6c757d"></i> Add New
+            Contract Detail</a>
+        </button>
+    </th:block>
+</div>
+
+<div class="notify" style="color: red" align="center" th:if="${message}"><span th:text="${message}"></span></div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Attach Service</th>
+        <th scope="col">Contract</th>
+        <th scope="col">View</th>
+        <th:block sec:authorize="hasAnyRole('MANAGER')">
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </th:block>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contractDetail:${contractDetailList}">
+        <td th:text="${contractDetail.id}"></td>
+        <td th:text="${contractDetail.quantity}"></td>
+        <td th:text="${contractDetail.attachService.name}"></td>
+        <td th:text="${contractDetail.contract.id}"></td>
+        <td><a th:href="@{/contractDetail/{id}/view(id=${contractDetail.getId()})}"><i class="fa fa-eye"
+                                                                                       style="color: blue"></i></a></td>
+        <th:block sec:authorize="hasAnyRole('MANAGER')">
+            <td><a th:href="@{/contractDetail/{id}/edit(id=${contractDetail.getId()})}"><i class="material-icons"
+                                                                                           style="color: hotpink">&#xE254;</i></a>
+            </td>
+            <td>
+                <!--                <a th:href="@{/contractDetail/{id}/delete(id=${contractDetail.getId()})}"><i class="material-icons"-->
+                <!--                                                                                             style="color: red">&#xE5C9;</i></a>-->
+                <a data-toggle="modal" data-target="#deleteContractDetailModal" href="#"
+                   th:data-id="${contractDetail.id}" class="delete" title="Delete"><i class="material-icons"
+                                                                                      style="color: red">&#xE5C9;</i></a>
+            </td>
+        </th:block>
+    </tr>
+    </tbody>
+</table>
+
+<!-- --------------------------------- Xóa Modal -------------------------------------->
+<div id="deleteContractDetailModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/contractDetail/remove" method="post">
+                <input type="hidden" name="deleteId" id="deleteId"/>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Contract Detail</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="warning" style="color: red; width: 100%"/>
+                    <p class="text-warning"><small style="color: blue">This action cannot be
+                        undone.</small>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!------------------------------------------------------------------------------------------------------------------->
+
+<div style="margin-left: 1230px">
+    <a th:if="${contractDetailList.hasPrevious()}"
+       th:href="@{/contractDetail(page = ${contractDetailList.number - 1})}">Previous</a>
+    <span th:text="${contractDetailList.number + 1}"></span>/<span th:text="${contractDetailList.totalPages}"></span>
+    <a th:if="${contractDetailList.hasNext()}"
+       th:href="@{/contractDetail(page = ${contractDetailList.number + 1})}">Next</a>
+</div>
+
+<footer th:replace="common/common::footer"></footer>
+
+<!-- --------------------------------------------------- Xóa Modal -------------------------------------------------->
+<script>
+    $(".delete").click(function () {
+        $("#deleteContractDetailModal input[id='deleteId']").val($(this).data("id"));
+        $("#deleteContractDetailModal input[id='warning']").val("Are you sure you want to delete Contract Detail have ID is "
+            + $(this).data("id") + " ?");
+    });
+</script>
+<!------------------------------------------------------------------------------------------------------------------->
+
+</body>
+</html>

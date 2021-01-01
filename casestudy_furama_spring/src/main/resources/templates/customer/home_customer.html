@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head >
+    <meta charset="UTF-8">
+    <title>Info Customer</title>
+    <!-- Style -->
+    <link href="assets/css/fresh-bootstrap-table.css" rel="stylesheet" />
+
+    <!-- Fonts and icons -->
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous">
+
+    </script>
+
+</head>
+<body>
+<header th:replace="common/common::header"></header>
+
+
+<main class="container">
+    <div></div>
+    <form action="/customer">
+        <button class="btn btn-success" type="submit"  style="margin-left: -120px; margin-top: -152px" value="Search"
+        >Search
+        </button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search By Name" aria-label="Search"
+               style="width: 250px; margin-top: -105px; margin-left: 200px" name="keyword"
+               th:value="${keywordOld}">
+    </form>
+    <div class="fresh-table toolbar-color-blue">
+        <div class="toolbar">
+            <th:block sec:authorize="hasAnyRole('MANAGER','ADMIN')">
+                <button type="submit" class="btn btn-warning" style="margin-top: -13px; margin-bottom: 3px"><a
+                        th:href="@{/customer/create}"
+                        style="text-decoration: none; color: #0c0c0c"><i class="fas fa-plus" style="color: #6c757d"></i> Add New
+                    Contract</a>
+                </button>
+            </th:block>
+
+        </div>
+        <table id="fresh-table" class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Type Customer</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">username</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer:${customerList}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.fullName}"></td>
+                <td th:text="${customer.birthday}"></td>
+                <td th:text="${customer.gender}"></td>
+                <td th:text="${customer.typeCustomer.name}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.appUser.userName}"></td>
+                <td>
+                    <a th:href="@{/customer/{id}/view(id=${customer.getId()})}"><i class="fa fa-eye"
+                                                                                   style="color: blue"></i></a>
+                    <a th:href="@{/customer/{id}/edit(id=${customer.getId()})}"><i class="material-icons"
+                                                                                   style="color: hotpink">&#xE254;</i></a>
+                    <!--            <a th:href="@{/customer/{id}/delete(id=${customer.getId()})}"><i class="material-icons" style="color: red">&#xE5C9;</i></a>-->
+                    <a data-toggle="modal" data-target="#deleteCustomerModal" href="#"
+                       th:data-id="${customer.id}" class="delete" title="Delete"><i class="material-icons"
+                                                                                    style="color: red">&#xE5C9;</i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <div style="margin-left: 1230px">
+        <a th:if="${customerList.hasPrevious()}"
+           th:href="@{/customer(page = ${customerList.number - 1}, keyword = ${keywordOld})}">Previous</a>
+        <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
+        <a th:if="${customerList.hasNext()}"
+           th:href="@{/customer(page = ${customerList.number + 1}, keyword = ${keywordOld})}">Next</a>
+    </div>
+
+    <div class="notify" style="color: red" align="center" th:if="${message}"><span th:text="${message}"></span></div>
+    </div>
+
+
+
+
+
+    <!-- --------------------------------- Xóa Modal -------------------------------------->
+    <div id="deleteCustomerModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/customer/remove" method="post">
+                    <input type="hidden" name="deleteId" id="deleteId"/>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Customer</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="warning" style="color: red; width: 100%"/>
+                        <p class="text-warning"><small style="color: blue">This action cannot be
+                            undone.</small>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------->
+
+    <div style="margin-left: 1230px">
+        <a th:if="${customerList.hasPrevious()}"
+           th:href="@{/customer(page = ${customerList.number - 1}, keyword = ${keywordOld})}">Previous</a>
+        <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
+        <a th:if="${customerList.hasNext()}"
+           th:href="@{/customer(page = ${customerList.number + 1}, keyword = ${keywordOld})}">Next</a>
+    </div>
+</main>
+
+
+<footer th:replace="layout::footer"></footer>
+
+
+
+
+<!-- --------------------------------------------------- Xóa Modal -------------------------------------------------->
+<script>
+    $(".delete").click(function () {
+        $("#deleteCustomerModal input[id='deleteId']").val($(this).data("id"));
+        $("#deleteCustomerModal input[id='warning']").val("Are you sure you want to delete Customer have ID is "
+            + $(this).data("id") + " ?");
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
+
+<script type="text/javascript">
+    var $table = $('#fresh-table')
+    var $alertBtn = $('#alertBtn')
+
+    window.operateEvents = {
+        'click .like': function (e, value, row, index) {
+            alert('You click like icon, row: ' + JSON.stringify(row))
+            console.log(value, row, index)
+        },
+        'click .edit': function (e, value, row, index) {
+            alert('You click edit icon, row: ' + JSON.stringify(row))
+            console.log(value, row, index)
+        },
+        'click .remove': function (e, value, row, index) {
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: [row.id]
+            })
+        }
+    }
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
+            '<i class="fa fa-heart"></i>',
+            '</a>',
+            '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
+            '<i class="fa fa-edit"></i>',
+            '</a>',
+            '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
+            '<i class="fa fa-remove"></i>',
+            '</a>'
+        ].join('')
+    }
+
+    $(function () {
+        $table.bootstrapTable({
+            classes: 'table table-hover table-striped',
+            toolbar: '.toolbar',
+
+            search: true,
+            showRefresh: true,
+            showToggle: true,
+            showColumns: true,
+            pagination: true,
+            striped: true,
+            sortable: true,
+            pageSize: 8,
+            pageList: [8, 10, 25, 50, 100],
+
+            formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                return ''
+            },
+            formatRecordsPerPage: function (pageNumber) {
+                return pageNumber + ' rows visible'
+            }
+        })
+
+        $alertBtn.click(function () {
+            alert('You pressed on Alert')
+        })
+    })
+
+</script>
+<!------------------------------------------------------------------------------------------------------------------->
+</body>
+</html>

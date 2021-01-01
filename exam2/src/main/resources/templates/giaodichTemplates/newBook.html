@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="header">
+        <h4 class="title">the</h4>
+        <p class="category">fill out & click save</p>
+    </div>
+
+    <div class="content">
+        <form th:object="${new}" th:action="@{/giaodich/create}" th:method="post">
+            <div class="form-group">
+                <input type="hidden" class="form-control" th:field="*{id}"/>
+            </div>
+            <div class="form-group">
+                <label for="Customer">Customer name :</label>
+                <select class="form-control" id="Customer" th:field="*{customer}" required>
+                    <th:block th:each="customer : ${customerList}">
+                        <option th:value="${customer.id}" th:text="${customer.name}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" aria-describedby="author" th:field="*{author}" playeholder="Joanne K. Rowling"/>
+            </div>
+            <div class="form-group">
+                <label for="loaiDichVu">loai dich vu :</label>
+                <select class="form-control" id="loaiDichVu" th:field="*{loaiDV}" required>
+                    <th:block th:each="loaiDV : ${loaiDVList}">
+                        <option th:value="${loaiDV.id}" th:text="${loaiDV.name}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dienTich">dien Tich :</label>
+                <input type="text" class="form-control" id="dienTich" th:field="*{dienTich}" required/>
+                <p style="color: red" th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}"></p>
+            </div>
+            <div class="form-group">
+                <label for="ngayGD">ngay giao dich</label>
+                <input type="date"  class="form-control" id="ngayGD" th:field="*{ngayGD}" required/>
+                <p style="color: red" th:if="${#fields.hasErrors('ngayGD')}" th:errors="*{ngayGD}"></p>
+            </div>
+            <div class="form-group">
+                <label for="donGia"> don gia :</label>
+                <input type="text" class="form-control" id="donGia" th:field="*{donGia}" required/>
+                <p style="color: red" th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+    </div>
+</div>

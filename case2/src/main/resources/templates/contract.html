@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Contract</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            height: 150px;
+            width: 270px;
+        }
+
+        h1 {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-left: 3%;
+        }
+
+        h5 {
+            color: sienna;
+            margin-left: 11%;
+        }
+
+        .col-sm-3 img {
+            width: 95%;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            background-color: aqua;
+            text-align: center;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div>
+        <th:block th:replace="fragment :: header"/>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form action="/contract/createContract" method="post" th:object="${contract}">
+                <div class="text-center">
+                    <h3 class="w-100 dark-grey-text font-weight-bold my-2" style="color: darkblue"
+                        id="add">
+                        <strong>Create New Contract</strong></h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceFurama">Service :</label>
+                    <select class="form-control" id="serviceFurama" th:field="*{serviceFurama}">
+                        <th:block th:each="serviceFurama : ${serviceFuramaList}">
+                            <option th:value="${serviceFurama.id}" th:text="${serviceFurama.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="employee">Employee :</label>
+                    <select class="form-control" id="employee" th:field="*{employee}">
+                        <th:block th:each="employee : ${employeeList}">
+                            <option th:value="${employee.id}" th:text="${employee.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer">Customer :</label>
+                    <select class="form-control" id="customer" th:field="*{customer}">
+                        <th:block th:each="customer : ${customerList}">
+                            <option th:value="${customer.id}" th:text="${customer.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">Start Date :</label>
+                    <input type="date" class="form-control" id="startDate" th:field="*{startDate}" required/>
+                    <p style="color: red" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">End Date :</label>
+                    <input type="date" class="form-control" id="endDate" th:field="*{endDate}" required/>
+                    <p style="color: red" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="deposit">Deposit :</label>
+                    <input type="text" class="form-control" id="deposit" th:field="*{deposit}" required/>
+                    <p style="color: red" th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="totalMoney">Total Money :</label>
+                    <input type="text" class="form-control" id="totalMoney" th:field="*{totalMoney}" required/>
+                    <p style="color: red" th:if="${#fields.hasErrors('totalMoney')}" th:errors="*{totalMoney}"></p>
+                </div>
+
+                <a style="margin-left: 37%" th:href="@{/home}" class="btn btn-info">Cancel</a>
+                <span><input type="submit" class="btn btn-info" value="Create New"/></span>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <br>
+
+    <div>
+        <th:block th:replace="fragment :: footer"/>
+    </div>
+</div>
+</body>
+</html>

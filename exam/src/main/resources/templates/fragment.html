@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragment</title>
+</head>
+<body>
+<header th:fragment="header">
+    <div class="row" style="margin-top: 10px">
+        <div class="col-sm-9" style="margin-top: 5px">
+            <th:block sec:authorize="hasRole('MEMBER') || hasRole('ADMIN')">
+                <h2>Welcome, <span style="color: red" sec:authentication="principal.username"></span></h2>
+<!--                <h3 style="color: blue">What do you want ?!</h3>-->
+            </th:block>
+        </div>
+        <div class="col-sm-1">
+            <div style="margin-top: 9px">
+                <th:block sec:authorize="isAnonymous()">
+                    <a th:href="@{/login}" style="font-weight: bold"
+                       class="btn btn-outline-success my-2 my-sm-0">
+                        Sign In</a>
+                </th:block>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div style="margin-top: 30px">
+                <th:block sec:authorize="hasRole('MEMBER') || hasRole('ADMIN')">
+                    <a th:href="@{/logout}" style="font-weight: bold"
+                       class="btn btn-outline-success my-2 my-sm-0">
+                        Log Out</a>
+                </th:block>
+            </div>
+        </div>
+    </div>
+    <hr style="border: solid">
+</header>
+</body>
+</html>

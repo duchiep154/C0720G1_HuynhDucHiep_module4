@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<nav th:replace="layout :: nav"></nav>
+<button id="edit-TreatmentPlan">Edit Treatment Plan</button>
+
+<br><br>
+
+<div id="treatment-plan">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col"> full Name</th>
+                <th scope="col">ID card</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Type Customer</th>
+                <th scope="col">User name</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="customer:${customerList}" id="treatment-plan-row0">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.fullName}"></td>
+                <td th:text="${customer.idCard}"></td>
+                <td th:text="${customer.birthday}"></td>
+                <td th:text="${customer.gender}"></td>
+                <td th:text="${customer.phone}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.typeCustomer.name}"></td>
+                <td th:text="${customer.appUser.userName}"></td>
+                <td>
+                <td>
+                    <a th:href="@{/customer/{id}/view(id=${customer.getId()})}"><i class="fa fa-eye"
+                                                                                   style="color: blue"></i></a>
+                    <a th:href="@{/customer/{id}/edit(id=${customer.getId()})}"><i class="material-icons"
+                                                                                   style="color: hotpink">&#xE254;</i></a>
+                    <!--            <a th:href="@{/customer/{id}/delete(id=${customer.getId()})}"><i class="material-icons" style="color: red">&#xE5C9;</i></a>-->
+                    <a data-toggle="modal" data-target="#deleteCustomerModal" href="#"
+                       th:data-id="${customer.id}" class="delete" title="Delete"><i class="material-icons"
+                                                                                    style="color: red">&#xE5C9;</i></a>
+                </td>
+            </tr>
+
+            <tr id="treatment-plan-row1">
+                <td class="date">01/02/2017</td>
+                <td class="protocol">Extended Depression</td>
+                <td>3000</td>
+                <td>-</td>
+                <td class="operator">Nurse Ratched</td>
+                <td>Insurance</td>
+                <td>
+                    <a href="#treatmentPlanRowDialog" data-toggle="modal">Edit</a>
+                    <a href="#deleteTableRowDialog" data-toggle="modal">Delete</a>
+                </td>
+            </tr>
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <button id="add-row-TreatmentPlan">Add row</button>
+</div>
+
+<div class="modal fade" id="treatmentPlanRowDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 id="id">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>some content</p>
+                <input type="text" name="date" value="" />
+                <input type="text" name="protocol" value="" />
+
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" id="dropdownOperator" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownOperator">
+                        <li><a href="#" data-value="action">Nurse Betty</a></li>
+                        <li><a href="#" data-value="another action">Nurse Ratched</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save-TreatmentPlanRowDialog">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteTableRowDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 id="id">Delete</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="delete-TreatmentPlanRow">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="layout :: footer"></footer>
+
+</body>
+</html>
+
+<div class="container">
+    <div class="col-12">
+        <table id="fresh-table" class="table full-color-blue">
+            <thead>
+            <th data-field="id">ID</th>
+            <th data-field="full Name" data-sortable="true">full Name</th>
+            <th data-field="ID card">ID card</th>
+            <th data-field="Birthday">Birthday</th>
+            <th data-field="Gender">Gender</th>
+            <th data-field="Phone">Phone</th>
+            <th data-field="Email">Email</th>
+            <th data-field="Address" data-sortable="true">Address</th>
+            <th data-field="Type Customer">Type Customer</th>
+            <th data-field="User name">User name</th>
+            <th scope="col">Action</th>
+            </thead>
+            <tbody>
+
+            <tr th:each="customer:${customerList}" id="treatment-plan-row0">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.fullName}"></td>
+                <td th:text="${customer.idCard}"></td>
+                <td th:text="${customer.birthday}"></td>
+                <td th:text="${customer.gender}"></td>
+                <td th:text="${customer.phone}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.typeCustomer.name}"></td>
+                <td th:text="${customer.appUser.userName}"></td>
+                <td>
+                    <a th:href="@{/customer/{id}/view(id=${customer.getId()})}"><i class="fa fa-eye"
+                                                                                   style="color: blue"></i></a>
+                    <a th:href="@{/customer/{id}/edit(id=${customer.getId()})}"><i class="material-icons"
+                                                                                   style="color: hotpink">&#xE254;</i></a>
+                    <!--            <a th:href="@{/customer/{id}/delete(id=${customer.getId()})}"><i class="material-icons" style="color: red">&#xE5C9;</i></a>-->
+                    <a data-toggle="modal" data-target="#deleteCustomerModal" href="#"
+                       th:data-id="${customer.id}" class="delete" title="Delete"><i class="material-icons"
+                                                                                    style="color: red">&#xE5C9;</i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+</div>
+

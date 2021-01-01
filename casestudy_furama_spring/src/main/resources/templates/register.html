@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .modal-login {
+            color: #636363;
+            width: 350px;
+            margin: 80px auto 0;
+        }
+
+        .modal-login .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .modal-login .modal-header {
+            border-bottom: none;
+            position: relative;
+            justify-content: center;
+        }
+
+        .modal-login h4 {
+            text-align: center;
+            font-size: 26px;
+            margin: 30px 0 -15px;
+        }
+
+        .modal-login .form-control:focus {
+            border-color: #70c5c0;
+        }
+
+        .modal-login .form-control, .modal-login .btn {
+            min-height: 40px;
+            border-radius: 3px;
+        }
+
+        .modal-login .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .modal-login .modal-footer {
+            background: #ecf0f1;
+            border-color: #dee4e7;
+            text-align: center;
+            justify-content: center;
+            margin: 0 -20px -20px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .modal-login .modal-footer a {
+            color: #999;
+        }
+
+        .modal-login .avatar {
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: -70px;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            z-index: 9;
+            background: #60c7c1;
+            padding: 15px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-login .avatar img {
+            width: 100%;
+        }
+
+        .modal-login .btn {
+            color: #fff;
+            border-radius: 4px;
+            background: #60c7c1;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            border: none;
+        }
+
+        .modal-login .btn:hover, .modal-login .btn:focus {
+            background: #45aba6;
+            outline: none;
+        }
+
+        .trigger-btn {
+            display: inline-block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="text-center">
+    <h1 th:text="${message}" style="color: red"></h1>
+    <!-- Button HTML (to Trigger Modal) -->
+    <h3><a href="#myModal" class="trigger-btn" data-toggle="modal" style="color: #0014ff; margin-top: -30px">Register Here</a></h3>
+        <img src="https://www.furama.com/images/nw_h_FHI-Home.jpg" style="width: 1330px; height: 580px; margin-top: -100px">
+</div>
+<h1 th:text="${message}" style="color: aqua"></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form th:action="@{/registerNew}" th:object="${registerUser}" method="post">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">User Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <input id="userName"   class="form-control" type="text"
+                                   th:field="*{userName}" required>
+                        </div>
+                    </div>
+                    <label style="color: red" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">PassWord</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <input name="password"  class="form-control"
+                                   type="password" th:field="*{encrytedPassword}" required>
+                        </div>
+                    </div>
+<!--                    <label style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{encrytedPassword}"></label>-->
+                </div>
+
+
+                <div class="form-group">-->
+
+                        <label class="control-label" for="terms"> I agree with the <a
+                                href="#">terms and conditions</a> for Registration.</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <input id="terms" type="checkbox" th:field="*{enabled}" />
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <span>Already registered? <a href="/" th:href="@{/login}">Login
+        here</a></span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="avatar">
+                    <img src="https://img.favpng.com/21/10/18/computer-icons-login-management-user-png-favpng-hxPPSvqskBENeUsyc5xq7LtCm.jpg
+" alt="Avatar" style="height: 70px; width: 70px">
+                </div>
+
+                <h4 class="modal-title">Member Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <!--            <div class="modal-footer">-->
+            <!--                <a href="#">Forgot Password?</a>-->
+            <!--                <a th:href="@{/login/register}">Sign up</a>-->
+            <!--            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

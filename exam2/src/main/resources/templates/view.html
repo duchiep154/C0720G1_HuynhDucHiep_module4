@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+</head>
+<body>
+
+<div align="center">
+    <div >
+        <div class="container">
+            <form class="well form-horizontal" action="#" th:action="@{/update}" th:object="${edit}" method="post"  id="contact_form">
+                <fieldset style="background-color: #20b2395e">
+
+                    <!-- Form Name -->
+                    <legend><center><h2><b>giao dich chi tiết</b></h2></center></legend><br>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label for="maGiaoDich">ID :</label>
+                        <input type="text" class="form-control" id="maGiaoDich" th:field="*{id}" readonly/>
+<!--                        <p style="color: red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>-->
+<!--                        <p style="color: red" th:text="${messageIdExist}"></p>-->
+                    </div>
+                    <form th:action="@{/update}" th:object="${edit}" method="post">
+                        <div class="form-group">
+
+                            <input type="hidden" class="form-control" id="customer" th:field="*{customer.id}" required/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="customerName">Customer name :</label>
+                            <input type="text" class="form-control" id="customerName" th:field="*{customer.name}" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Customer phone :</label>
+                            <input type="text" class="form-control" id="customerPhone" th:field="*{customer.phone}" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Customer email :</label>
+                            <input type="text" class="form-control" id="customerEmail" th:field="*{customer.email}" readonly/>
+                        </div>
+                    </form>
+
+                    <div class="form-group">
+                        <label for="loaiDV">loai Dich vu :</label>
+                        <input type="text" class="form-control" id="loaiDV" th:field="*{loaiDV.name}" readonly/>
+                    </div>
+
+
+                            <div class="form-group">
+                                <label for="dienTich">dien Tich :</label>
+                                <input type="text" class="form-control" id="dienTich" th:field="*{dienTich}" required/>
+<!--                                <p style="color: red" th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}"></p>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="ngayGD">ngay giao dich</label>
+                                <input type="date"  class="form-control" id="ngayGD" th:field="*{ngayGD}" required/>
+<!--                                <p style="color: red" th:if="${#fields.hasErrors('ngayGD')}" th:errors="*{ngayGD}"></p>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="donGia"> don gia :</label>
+                                <input type="text" class="form-control" id="donGia" th:field="*{donGia}" required/>
+<!--                                <p style="color: red" th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}"></p>-->
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <a th:href="@{/}" th:text="Cancel"></a>
+                                <input type="submit" class="btn btn-info" value="update"/>
+                            </div>
+                </fieldset>
+            </form>
+
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+
+<!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4"><br>
+                            <button type="submit" class="btn btn-warning" ><a th:href="@{/}" style="text-decoration: none; color: #0c0c0c">Back to giaodich List</a></button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<!--<footer th:replace="/common::footerCustomer"></footer>-->
+</body>
+</html>

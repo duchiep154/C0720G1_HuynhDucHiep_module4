@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>List Employee</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            height: 150px;
+            width: 270px;
+        }
+
+        h1 {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-left: 3%;
+        }
+
+        h5 {
+            color: sienna;
+            margin-left: 11%;
+        }
+
+        .col-sm-3 img {
+            width: 95%;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            background-color: aqua;
+            text-align: center;
+            height: 25px;
+        }
+
+        .searchBox {
+            margin-left: 11%;
+            width: 25%;
+        }
+
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .table-responsive {
+            margin: 30px 0;
+        }
+
+        .table-wrapper {
+            min-width: 1000px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+            min-width: 100%;
+        }
+
+        .table-title h2 {
+            margin: 8px 0 0;
+            font-size: 22px;
+        }
+
+        .search-box {
+            position: relative;
+            display: flex;
+        }
+
+        .search-box input {
+            border-radius: 20px;
+            padding-left: 35px;
+            border-color: #ddd;
+            box-shadow: none;
+        }
+
+        .search-box input {
+            border-radius: 20px;
+        }
+
+        .search-box input:focus {
+            border-color: #3FBAE4;
+        }
+
+        .search-box i {
+            color: #a0a5b1;
+            position: absolute;
+            font-size: 19px;
+            top: 11px;
+            left: 10px;
+        }
+
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+        }
+
+        table.table-striped tbody tr:nth-of-type(odd) {
+            background-color: #fcfcfc;
+        }
+
+        table.table-striped.table-hover tbody tr:hover {
+            background: #f5f5f5;
+        }
+
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        table.table td:last-child {
+            width: 130px;
+        }
+
+        table.table td a {
+            color: #a0a5b1;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        table.table td a.view {
+            color: #03A9F4;
+        }
+
+        table.table td a.edit {
+            color: #FFC107;
+        }
+
+        table.table td a.delete {
+            color: #E34724;
+        }
+
+        table.table td i {
+            font-size: 19px;
+        }
+
+        .pagination {
+            float: right;
+            margin: 0 0 5px;
+        }
+
+        .pagination li a {
+            border: none;
+            font-size: 95%;
+            width: 30px;
+            height: 30px;
+            color: #999;
+            margin: 0 2px;
+            line-height: 30px;
+            border-radius: 30px !important;
+            text-align: center;
+            padding: 0;
+        }
+
+        .pagination li a:hover {
+            color: #666;
+        }
+
+        .pagination li.active a {
+            background: #03A9F4;
+        }
+
+        .pagination li.active a:hover {
+            background: #0397d6;
+        }
+
+        .pagination li.disabled i {
+            color: #ccc;
+        }
+
+        .pagination li i {
+            font-size: 16px;
+            padding-top: 6px
+        }
+
+        .hint-text {
+            float: left;
+            margin-top: 6px;
+            font-size: 95%;
+        }
+
+        .message {
+            text-align: center;
+            color: orangered;
+        }
+
+        label {
+            color: chocolate;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div>
+        <th:block th:replace="fragment :: header"/>
+    </div>
+
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1 style="color: red">Employee List</h1>
+
+                        <th:block sec:authorize="hasRole('ADMIN')">
+                            <a href="#addEmployeeModal" style="margin-left: 0" id="onlickAddModal"
+                               class="btn btn-success"
+                               data-toggle="modal">
+                                <i class="material-icons">&#xE147;</i>
+                                <span>Add New Employee</span></a>
+                        </th:block>
+                    </div>
+                    <div class="col-sm-4">
+                        <form action="/employee">
+                            <div>
+                                <label>
+                                    <input type="text" name="keyword" placeholder="Search by Name"
+                                           th:value="${keywordOld}"/>
+                                </label>
+                                <input style="background-color: aqua" type="submit" value="Search"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <h3 class="message" th:text="${message}" style="text-align: center"></h3>
+            <table id="tableEmployee" class="table table-striped table-hover table-bordered" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Birth Day</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <th>Actions</th>
+                    </th:block>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="employee : ${employeeList}">
+                    <tr>
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.birthday}"></td>
+                        <td th:text="${employee.phoneNumber}"></td>
+                        <td th:text="${employee.email}"></td>
+                        <td th:text="${employee.address}"></td>
+
+                        <th:block sec:authorize="hasRole('ADMIN')">
+                            <td>
+                                <span class="view" th:data-id="${employee.id}"
+                                      th:data-name="${employee.name}"
+                                      th:data-birthday="${employee.birthday}"
+                                      th:data-idcard="${employee.idCard}"
+                                      th:data-salary="${employee.salary}"
+                                      th:data-phonenumber="${employee.phoneNumber}"
+                                      th:data-email="${employee.email}"
+                                      th:data-address="${employee.address}"
+                                      th:data-position="${employee.position.name}"
+                                      th:data-division="${employee.division.name}"
+                                      th:data-educationdegree="${employee.educationDegree.name}">
+<!--                                  th:data-appUser="${employee.appUser.userName}">-->
+                                      <a href="#viewEmployeeModal" id="viewDetail" data-toggle="modal"
+                                         class="material-icons"
+                                         role="button" onclick="getEditModal()">
+                                      <i style="color: darkviolet" class="material-icons" data-toggle="tooltip"
+                                         title="Edit">visibility</i>
+                                      </a>
+                                </span>
+
+                                <span class="update" th:data-id="${employee.id}"
+                                      th:data-name="${employee.name}"
+                                      th:data-birthday="${employee.birthday}"
+                                      th:data-idcard="${employee.idCard}"
+                                      th:data-salary="${employee.salary}"
+                                      th:data-phonenumber="${employee.phoneNumber}"
+                                      th:data-email="${employee.email}"
+                                      th:data-address="${employee.address}"
+                                      th:data-position="${employee.position.id}"
+                                      th:data-division="${employee.division.id}"
+                                      th:data-educationdegree="${employee.educationDegree.id}">
+<!--                                      th:data-appUser="${employee.appUser.userId}">-->
+                                      <a href="#editEmployeeModal" id="update" data-toggle="modal"
+                                         class="material-icons"
+                                         role="button" onclick="getEditModal()">
+                                      <i style="color: blue" class="material-icons" data-toggle="tooltip"
+                                         title="Edit">&#xE254;</i>
+                                      </a>
+                                </span>
+
+                                <a data-toggle="modal" data-target="#deleteEmployeeModal" href="#"
+                                   th:data-id="${employee.id}" class="delete" title="Delete"
+                                ><i class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </th:block>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+
+            <div class="clearfix">
+                <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>
+                <ul class="pagination">
+                    <li class="page-item active"><a class="page-link" th:if="${employeeList.hasPrevious()}"
+                                                    th:href="@{/employee(page = ${employeeList.number - 1},
+                                                    keyword = ${keywordOld})}">Previous</a>
+                    </li>
+                    <li class="page-item disabled"><a class="page-link" th:unless="${employeeList.hasPrevious()}"
+                                                      th:href="@{/employee(page = ${employeeList.number - 1},
+                                                      keyword = ${keywordOld})}">Previous</a>
+                    </li>
+                    <th:block th:each="i:${#numbers.sequence(0,(employeeList.totalPages)-1)}">
+                        <li class="page-item disabled">
+                            <a th:if="${employeeList.number == i}" class="page-link"
+                               th:href="@{/employee(page = ${i}, keyword = ${keywordOld})}"
+                               th:text="${i+1}">
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a th:unless="${employeeList.number == i}" class="page-link"
+                               th:href="@{/employee(page = ${i}, keyword = ${keywordOld})}"
+                               th:text="${i+1}">
+                            </a>
+                        </li>
+
+                    </th:block>
+                    <li class="page-item active"><a class="page-link" th:if="${employeeList.hasNext()}"
+                                                    th:href="@{/employee(page = ${employeeList.number + 1},
+                                                    keyword = ${keywordOld})}">Next</a>
+                    </li>
+                    <li class="page-item disabled"><a class="page-link" th:unless="${employeeList.hasNext()}"
+                                                      th:href="@{/employee(page = ${employeeList.number + 1},
+                                                      keyword = ${keywordOld})}">Next</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="deleteEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="/employee/deleteEmployee" method="post">
+                            <input type="hidden" name="deleteId" id="deleteId"/>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete Employee</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input id="warning" style="color: red; width: 100%"/>
+                                <p class="text-warning"><small style="color: blue">This action cannot be
+                                    undone.</small>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="addEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/employee/createNew" method="post" th:object="${employee}">
+
+                    <input type="hidden" id="validCreate" th:value="${#fields.hasErrors()}">
+                    <input type="hidden" id="wrongCreate" th:value="${wrongCreate}">
+
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: darkblue"
+                            id="add">
+                            <strong>Create New Employee</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Name :</label>
+                            <input type="text" class="form-control" id="name" th:field="*{name}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthDay">Birth Day :</label>
+                            <input type="date" class="form-control" id="birthDay" th:field="*{birthday}"
+                                   required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idCard">ID Card :</label>
+                            <input type="text" class="form-control" id="idCard" th:field="*{idCard}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salary">Salary :</label>
+                            <input type="text" class="form-control" id="salary" th:field="*{salary}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number :</label>
+                            <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}"
+                                   required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('phoneNumber')}"
+                               th:errors="*{phoneNumber}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email :</label>
+                            <input type="text" class="form-control" id="email" th:field="*{email}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address :</label>
+                            <input type="text" class="form-control" id="address" th:field="*{address}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position">Position :</label>
+                            <select class="form-control" id="position" th:field="*{position}" required>
+                                <th:block th:each="position : ${positionList}">
+                                    <option th:value="${position.id}" th:text="${position.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="division">Division :</label>
+                            <select class="form-control" id="division" th:field="*{division}" required>
+                                <th:block th:each="division : ${divisionList}">
+                                    <option th:value="${division.id}" th:text="${division.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="educationDegree">Education Degree :</label>
+                            <select class="form-control" id="educationDegree" th:field="*{educationDegree}" required>
+                                <th:block th:each="educationDegree : ${educationDegreeList}">
+                                    <option th:value="${educationDegree.id}" th:text="${educationDegree.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label for="appUser">User :</label>-->
+                        <!--                            <select class="form-control" id="appUser" th:field="*{appUser}" required>-->
+                        <!--                                <th:block th:each="appUser : ${userList}">-->
+                        <!--                                    <option th:value="${appUser.userId}" th:text="${appUser.userName}"></option>-->
+                        <!--                                </th:block>-->
+                        <!--                            </select>-->
+                        <!--                        </div>-->
+
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-info" value="Create New"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="editEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/employee/update" method="post" th:object="${employee}">
+
+                    <input type="hidden" id="validEdit" th:value="${#fields.hasErrors()}">
+                    <input type="hidden" id="wrongEdit" th:value="${wrongEdit}">
+
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: darkviolet"
+                            id="edit">
+                            <strong>Edit Employee</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <input type="hidden" id="idEdit" th:field="*{id}">
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nameEdit">Name</label>
+                            <input type="text" id="nameEdit" th:field="*{name}" class="form-control" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Birth Day</label>
+                            <input type="date" id="birthdayEdit" th:field="*{birthday}" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label>ID Card</label>
+                            <input type="text" class="form-control" id="idCardEdit" th:field="*{idCard}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Salary</label>
+                            <input type="text" class="form-control" id="salaryEdit" th:field="*{salary}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumberEdit" th:field="*{phoneNumber}"
+                                   required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('phoneNumber')}"
+                               th:errors="*{phoneNumber}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="emailEdit" th:field="*{email}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="addressEdit" th:field="*{address}" required/>
+                            <p style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="positionEdit">Position</label>
+                            <select class="custom-select" id="positionEdit" th:field="*{position}">
+                                <option th:each="position : ${positionList}"
+                                        th:value="${position.id}" th:text="${position.name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="divisionEdit">Division</label>
+                            <select class="custom-select" id="divisionEdit" th:field="*{division}">
+                                <option th:each="division : ${divisionList}"
+                                        th:value="${division.id}" th:text="${division.name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="educationDegreeEdit">Education Degree</label>
+                            <select class="custom-select" id="educationDegreeEdit" th:field="*{educationDegree}">
+                                <option th:each="educationDegree : ${educationDegreeList}"
+                                        th:value="${educationDegree.id}" th:text="${educationDegree.name}"></option>
+                            </select>
+                        </div>
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label for="userEdit">User</label>-->
+                        <!--                            <select class="custom-select" id="userEdit" th:field="*{appUser}">-->
+                        <!--                                <option th:each="appUser : ${userList}"-->
+                        <!--                                        th:value="${appUser.userId}" th:text="${appUser.userName}"></option>-->
+                        <!--                            </select>-->
+                        <!--                        </div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <input style="color: chocolate" type="button" class="btn btn-default" data-dismiss="modal"
+                               value="Cancel">
+                        <input type="submit" class="btn btn-success" value="Update">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="viewEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form style="background-color: floralwhite">
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" style="color: darkviolet"
+                            id="view">
+                            <strong>Information Employee</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="idView">ID</label>
+                            <input type="text" id="idView" class="form-control" disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameView">Name</label>
+                            <input type="text" id="nameView" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>Birth Day</label>
+                            <input type="text" id="birthdayView" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>ID Card</label>
+                            <input type="text" class="form-control" id="idCardView" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>Salary</label>
+                            <input type="text" id="salaryView" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumberView" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="emailView" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="addressView" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="positionView">Position</label>
+                            <input type="text" class="form-control" id="positionView" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="divisionView">Division</label>
+                            <input type="text" class="form-control" id="divisionView" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="educationDegreeView">Education Degree</label>
+                            <input type="text" class="form-control" id="educationDegreeView" readonly/>
+                        </div>
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label for="userView">User Name</label>-->
+                        <!--                            <input type="text" class="form-control" id="userView" readonly/>-->
+                        <!--                        </div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <input style="color: darkred" type="button" class="btn btn-default" data-dismiss="modal"
+                               value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <th:block th:replace="fragment :: footer"/>
+    </div>
+</div>
+
+<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+    $(".delete").click(function () {
+        $("#deleteEmployeeModal input[id='deleteId']").val($(this).data("id"));
+        $("#deleteEmployeeModal input[id='warning']").val("Are you sure you want to delete Employee have ID is "
+            + $(this).data("id") + " ?");
+    });
+
+    $(".update").click(function () {
+        $("#editEmployeeModal input[id='idEdit']").val($(this).data("id"));
+        $("#editEmployeeModal input[id='nameEdit']").val($(this).data("name"));
+        $("#editEmployeeModal input[id='birthdayEdit']").val($(this).data("birthday"));
+        $("#editEmployeeModal input[id='idCardEdit']").val($(this).data("idcard"));
+        $("#editEmployeeModal input[id='salaryEdit']").val($(this).data("salary"));
+        $("#editEmployeeModal input[id='phoneNumberEdit']").val($(this).data("phonenumber"));
+        $("#editEmployeeModal input[id='emailEdit']").val($(this).data("email"));
+        $("#editEmployeeModal input[id='addressEdit']").val($(this).data("address"));
+
+        let position = $(this).data("position");
+        $("#editEmployeeModal select[id='positionEdit'] option").each(function () {
+            if (this.value == position) {
+                $(this).prop("selected", true);
+            }
+        });
+
+        let division = $(this).data("division");
+        $("#editEmployeeModal select[id='divisionEdit'] option").each(function () {
+            if (this.value == division) {
+                $(this).prop("selected", true);
+            }
+        });
+
+        let educationDegree = $(this).data("educationDegree");
+        $("#editEmployeeModal select[id='educationDegreeEdit'] option").each(function () {
+            if (this.value == educationDegree) {
+                $(this).prop("selected", true);
+            }
+        });
+
+        let appUser = $(this).data("appUser");
+        $("#editEmployeeModal select[id='userEdit'] option").each(function () {
+            if (this.value == appUser) {
+                $(this).prop("selected", true);
+            }
+        });
+    });
+
+    $(".view").click(function () {
+        $("#viewEmployeeModal input[id='idView']").val($(this).data("id"));
+        $("#viewEmployeeModal input[id='nameView']").val($(this).data("name"));
+        $("#viewEmployeeModal input[id='birthdayView']").val($(this).data("birthday"));
+        $("#viewEmployeeModal input[id='idCardView']").val($(this).data("idcard"));
+        $("#viewEmployeeModal input[id='salaryView']").val($(this).data("salary"));
+        $("#viewEmployeeModal input[id='phoneNumberView']").val($(this).data("phonenumber"));
+        $("#viewEmployeeModal input[id='emailView']").val($(this).data("email"));
+        $("#viewEmployeeModal input[id='addressView']").val($(this).data("address"));
+        $("#viewEmployeeModal input[id='positionView']").val($(this).data("position"));
+        $("#viewEmployeeModal input[id='divisionView']").val($(this).data("division"));
+        $("#viewEmployeeModal input[id='educationDegreeView']").val($(this).data("educationdegree"));
+        $("#viewEmployeeModal input[id='userView']").val($(this).data("appUser"));
+    });
+
+    if ($('#validCreate').val() == 'true' && $('#wrongCreate').val() == "errorCreate") {
+        $('#addEmployeeModal').modal('show');
+    }
+    if ($('#validEdit').val() == 'true' && $('#wrongEdit').val() == "errorEdit") {
+        $('#editEmployeeModal').modal('show');
+    }
+
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+</body>
+</html>

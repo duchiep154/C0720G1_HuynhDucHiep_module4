@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Add New Service</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous">
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            height: 150px;
+            width: 270px;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        .nav-link:hover {
+            background-color: black;
+            margin-left: 25px;
+        }
+
+        h5 {
+            margin-left: 90px;
+        }
+
+        .col-sm-3 img {
+            width: 100%;
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            background-color: gray;
+            text-align: center;
+            height: 25px;
+        }
+
+        fieldset {
+            background-image: linear-gradient(120deg, #4047ff, #81faf4);
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <header th:replace="common/common::hearder"></header>
+
+    <div align="center">
+        <div>
+            <div class="container">
+                <form class="well form-horizontal" action=" " th:action="@{/service/save}" th:object="${save}"
+                      method="post" id="contact_form">
+                    <fieldset>
+                        <legend>
+                            <center><h2><b>Add New Service</b></h2></center>
+                        </legend>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">ID Service</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="idCustomer" placeholder="ID Service" class="form-control" type="text"
+                                           th:field="*{id}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name Service</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="nameCustomer" placeholder="Name Service" class="form-control"
+                                           type="text"
+                                           th:field="*{name}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Area</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="area" placeholder="Area" class="form-control"
+                                           type="text" th:field="*{area}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Cost</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="cost" placeholder="Cost" class="form-control"
+                                           type="text" th:field="*{cost}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Max People</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="maxPeople" placeholder="Max People" class="form-control"
+                                           type="text" th:field="*{maxPeople}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('maxPeople')}"
+                                   th:errors="*{maxPeople}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Standard Room</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <select class="form-control" th:field="*{standardRoom}" required>
+                                        <option value="Vip">Vip</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Unknown">Unknown</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Description Other</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="description" placeholder="Description Other" class="form-control"
+                                           type="text" th:field="*{descriptionOtherConvenience}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('descriptionOtherConvenience')}"
+                                   th:errors="*{descriptionOtherConvenience}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Pool Area</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="poolArea" placeholder="Pool Area" class="form-control"
+                                           type="text" th:field="*{poolArea}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('poolArea')}"
+                                   th:errors="*{poolArea}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Number Floor</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <input name="numberFloor" placeholder="Number Floor" class="form-control"
+                                           type="text" th:field="*{numberOfFloors}" required>
+                                </div>
+                            </div>
+                            <label style="color: red" th:if="${#fields.hasErrors('numberOfFloors')}"
+                                   th:errors="*{numberOfFloors}"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Rent Type</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <select class="form-control" th:field="*{rentType}" required>
+                                        <th:block th:each="rentType:${rentTypeList}">
+                                            <option th:value="${rentType.id}"
+                                                    th:text="${rentType.name}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Type Service</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <select class="form-control" th:field="*{serviceType}" required>
+                                        <th:block th:each="serviceType:${serviceTypeList}">
+                                            <option th:value="${serviceType.id}"
+                                                    th:text="${serviceType.name}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-warning">CREATE</button>
+                                <button type="submit" class="btn btn-warning"><a th:href="@{/service}"
+                                                                                 style="text-decoration: none; color: #0c0c0c">CANCEL</a>
+                                </button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="common/common::footer"></footer>
+</div>
+</body>
+</html>

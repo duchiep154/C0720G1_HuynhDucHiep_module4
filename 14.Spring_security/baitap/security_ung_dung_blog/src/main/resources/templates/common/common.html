@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:fragment="nav-bar-layout">
+<nav class="navbar navbar-expand-md navbar-dark position-static bg-dark" th:fragment="nav-bar-layout">
     <a class="navbar-brand" href="#">LOGO Chua co</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link " th:href="@{/category/create}" tabindex="-1" >Create new category</a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
@@ -63,5 +63,8 @@
         </ul>
     </div>
 </nav>
+<footer th:fragment="footerBlog">
+    2020
+</footer>
 </body>
 </html>
